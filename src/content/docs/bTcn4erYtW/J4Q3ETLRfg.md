@@ -1,9 +1,9 @@
 ---
-title: "Minutes 2025-12-03"
+title: "3rd December '25 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
 documentId: "1800d528-bbe0-4dac-9009-8d9988ef475e"
-updatedAt: "2026-07-25T09:56:40.803Z"
+updatedAt: "2026-07-26T16:26:03.079Z"
 ---
 
 Time: 3 December 2025, 5-6pm

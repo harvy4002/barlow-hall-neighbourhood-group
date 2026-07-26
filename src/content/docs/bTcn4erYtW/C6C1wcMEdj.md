@@ -1,9 +1,9 @@
 ---
-title: "Minutes 2026-02-04"
+title: "4th February '26 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
 documentId: "62ad6af0-a74f-42ae-9173-59864024aba3"
-updatedAt: "2026-07-25T09:56:20.697Z"
+updatedAt: "2026-07-26T16:26:01.724Z"
 ---
 
 Hey everyone! Quick recap from our latest meeting. Lots of great discussions on community events, finances, and improving our communication!

@@ -1,9 +1,9 @@
 ---
-title: "Minutes 2026-01-07"
+title: "7th January '26 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
 documentId: "0dbdcba2-0a53-45f0-8503-418533d7dd5d"
-updatedAt: "2026-07-25T09:56:36.293Z"
+updatedAt: "2026-07-26T16:26:04.071Z"
 ---
 
 1. New "Green Task Team" Forming 🤝 We are setting up a specific subgroup for those interested in gardening, greening, and decision-making for our local spaces. Goal: Instead of Southway just presenting a finished plan, they want residents to help make decisions (e.g., where to plant trees, what bulbs to order). Time commitment: It won't be huge—mostly meeting around late summer to review judge feedback and plan for the next year. Action: If you enjoy gardening or want a say in how the green spaces look, keep an eye out for the sign-up!.

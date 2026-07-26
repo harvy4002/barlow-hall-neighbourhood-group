@@ -7,7 +7,7 @@ updatedAt: "2026-07-25T09:57:04.651Z"
 ---
 
 **Meeting Date:** 15th July
-**Location:** Fiona's House
+**Location:** Fiona’s House
 **Key Participants:** Fiona (Chair), Tess (Litter Pick Lead), Colette (Resident/Committee), Grace (Gracewell/Council), and other local residents.
 
 

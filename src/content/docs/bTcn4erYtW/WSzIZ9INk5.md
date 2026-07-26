@@ -1,9 +1,9 @@
 ---
-title: "Minutes 2025-11-05"
+title: "5th November '25 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
 documentId: "e40da6b8-8ad0-4d77-b016-fa5f56785f7f"
-updatedAt: "2026-07-25T09:56:31.109Z"
+updatedAt: "2026-07-26T16:26:03.413Z"
 ---
 
 BHNG November meeting
