@@ -31,7 +31,7 @@ if (!OUTLINE_URL || !OUTLINE_API_KEY) {
   process.exit(1);
 }
 
-const WIKI_DIR = join(ROOT, 'src/content/wiki');
+const WIKI_DIR = join(ROOT, 'src/content/docs');
 const IMAGES_DIR = join(ROOT, 'public/wiki-images');
 
 // Wipe and recreate wiki content on each sync so deleted Outline pages don't linger

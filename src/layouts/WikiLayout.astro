@@ -17,7 +17,7 @@ const {
 const siteName = 'Barlow Hall Neighbourhood Group';
 
 // Build sidebar nav tree from all wiki entries
-const allEntries = await getCollection('wiki');
+const allEntries = await getCollection('docs');
 
 // Group entries by collection
 const collectionMap = new Map<string, { name: string; entries: typeof allEntries }>();

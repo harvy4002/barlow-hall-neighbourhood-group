@@ -2,7 +2,7 @@
 import WikiLayout from '../../layouts/WikiLayout.astro';
 import { getCollection } from 'astro:content';
 
-const allEntries = await getCollection('wiki');
+const allEntries = await getCollection('docs');
 
 // Group by collection, count docs
 const collectionMap = new Map<string, { name: string; slug: string; count: number }>();

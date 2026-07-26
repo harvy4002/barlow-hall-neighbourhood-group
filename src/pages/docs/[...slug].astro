@@ -3,7 +3,7 @@ import WikiLayout from '../../layouts/WikiLayout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('wiki');
+  const entries = await getCollection('docs');
   return entries.map(entry => ({
     params: { slug: entry.id.replace(/\.md$/, '') },
     props: { entry },
