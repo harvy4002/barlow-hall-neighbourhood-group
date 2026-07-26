@@ -36,16 +36,16 @@ function formatDate(iso: string) {
 }
 ---
 
-<WikiLayout title="Wiki">
+<WikiLayout title="Docs">
   <Fragment slot="breadcrumb">
     <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
-      <span class="font-medium text-[#334355]">Wiki</span>
+      <span class="font-medium text-[#334355]">Docs</span>
     </nav>
   </Fragment>
 
   <div>
     <div class="mb-8">
-      <h1 class="font-serif text-3xl sm:text-4xl text-[#334355] mb-2 tracking-tight">Wiki</h1>
+      <h1 class="font-serif text-3xl sm:text-4xl text-[#334355] mb-2 tracking-tight">Docs</h1>
       <p class="text-gray-500">
         Meeting minutes, group notes, and community information for Barlow Hall Neighbourhood Group.
       </p>
@@ -53,7 +53,7 @@ function formatDate(iso: string) {
 
     {collections.length === 0 ? (
       <div class="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-12 text-center">
-        <p class="text-gray-500 text-sm">No wiki content has been synced yet.</p>
+        <p class="text-gray-500 text-sm">No docs content has been synced yet.</p>
         <p class="text-gray-400 text-xs mt-1">Run <code class="bg-gray-100 px-1 rounded">npm run sync-wiki</code> to pull content from Outline.</p>
       </div>
     ) : (

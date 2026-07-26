@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title,
-  description = 'Barlow Hall Neighbourhood Group wiki — meeting minutes, group notes and community information.',
+  description = 'Barlow Hall Neighbourhood Group docs — meeting minutes, group notes and community information.',
   currentSlug,
 } = Astro.props;
 
@@ -106,7 +106,7 @@ const collections = Array.from(collectionMap.entries()).map(([slug, data]) => ({
             <a href="/#home"     class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-400">Home</a>
             <a href="/#about"    class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-400">About</a>
             <a href="/#meetings" class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-400">Meetings</a>
-            <a href="/docs"      class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-white text-white">Wiki</a>
+            <a href="/docs"      class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-white text-white">Docs</a>
           </nav>
           <button
             id="wiki-menu-btn"
@@ -125,7 +125,7 @@ const collections = Array.from(collectionMap.entries()).map(([slug, data]) => ({
         <a href="/#home"     class="block py-2 text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-white transition-colors">Home</a>
         <a href="/#about"    class="block py-2 text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-white transition-colors">About</a>
         <a href="/#meetings" class="block py-2 text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-white transition-colors">Meetings</a>
-        <a href="/docs"      class="block py-2 text-sm font-medium uppercase tracking-wide text-white transition-colors">Wiki</a>
+        <a href="/docs"      class="block py-2 text-sm font-medium uppercase tracking-wide text-white transition-colors">Docs</a>
       </nav>
     </header>
 
@@ -146,7 +146,7 @@ const collections = Array.from(collectionMap.entries()).map(([slug, data]) => ({
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
-            Wiki Home
+            Docs Home
           </a>
 
           {collections.map(col => (
