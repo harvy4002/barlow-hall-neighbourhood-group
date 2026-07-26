@@ -17,12 +17,10 @@ const {
 
 const siteName = 'Barlow Hall Neighbourhood Group';
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/meetings', label: 'Meetings' },
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#meetings', label: 'Meetings' },
 ];
-
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <!doctype html>
@@ -49,24 +47,14 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
           </a>
           <!-- Desktop nav -->
           <nav class="hidden sm:flex gap-6" aria-label="Main navigation">
-            {navLinks.map(link => {
-              const isActive = link.href === '/'
-                ? currentPath === '/'
-                : currentPath.startsWith(link.href);
-              return (
-                <a
-                  href={link.href}
-                  class={`text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 ${
-                    isActive
-                      ? 'border-white text-white'
-                      : 'border-transparent text-gray-300 hover:text-white hover:border-gray-400'
-                  }`}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
+            {navLinks.map(link => (
+              <a
+                href={link.href}
+                class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-400"
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
           <!-- Mobile hamburger -->
           <button
@@ -84,22 +72,14 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       </div>
       <!-- Mobile nav -->
       <nav id="mobile-menu" class="hidden sm:hidden bg-[#2a3a47] px-4 pb-4" aria-label="Mobile navigation">
-        {navLinks.map(link => {
-          const isActive = link.href === '/'
-            ? currentPath === '/'
-            : currentPath.startsWith(link.href);
-          return (
-            <a
-              href={link.href}
-              class={`block py-2 text-sm font-medium uppercase tracking-wide transition-colors ${
-                isActive ? 'text-white' : 'text-gray-300 hover:text-white'
-              }`}
-              aria-current={isActive ? 'page' : undefined}
-            >
-              {link.label}
-            </a>
-          );
-        })}
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="block py-2 text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-white transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
       </nav>
     </header>
 
@@ -166,6 +146,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       btn?.addEventListener('click', () => {
         const isOpen = menu?.classList.toggle('hidden') === false;
         btn.setAttribute('aria-expanded', String(isOpen));
+      });
+      // Close mobile menu when any nav link is clicked
+      menu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          btn?.setAttribute('aria-expanded', 'false');
+        });
       });
     </script>
   </body>
