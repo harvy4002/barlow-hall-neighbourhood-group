@@ -22,27 +22,27 @@ const nextMeeting = {
 };
 ---
 
-<Layout
-  title="Barlow Hall Neighbourhood Group"
->
+<Layout title="Barlow Hall Neighbourhood Group">
 
   <!-- ── HOME ─────────────────────────────────────────────────────── -->
-  <section id="home" class="mb-20 scroll-mt-20">
-    <h1 class="text-3xl sm:text-4xl font-semibold text-[#334355] mb-4 tracking-tight">
-      Welcome to Barlow Hall Neighbourhood Group
-    </h1>
-    <p class="text-gray-500 text-lg mb-8 max-w-2xl">
-      An award-winning community group supporting the Barlow Hall area of Chorlton Park, Manchester.
-    </p>
+  <section id="home" class="mb-4 scroll-mt-20">
+    <div class="reveal">
+      <h1 class="font-serif text-4xl sm:text-5xl text-[#334355] mb-4 tracking-tight leading-tight">
+        Welcome to Barlow Hall<br class="hidden sm:block" /> Neighbourhood Group
+      </h1>
+      <p class="text-gray-500 text-lg mb-8 max-w-2xl">
+        An award-winning community group supporting the Barlow Hall area of Chorlton Park, Manchester.
+      </p>
+    </div>
 
-    <div class="grid sm:grid-cols-2 gap-10 items-start">
+    <div class="grid sm:grid-cols-2 gap-10 items-start reveal">
       <div>
-        <p class="text-gray-600 leading-relaxed mb-4">
+        <p class="text-gray-600 leading-relaxed mb-6">
           We're a group of local Chorlton residents, councillors, park rangers and housing
           representatives working together to improve the Barlow Hall area for everyone —
           whether you're a tenant or a home owner.
         </p>
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <div class="bg-amber-50 border-l-4 border-[#e8a020] rounded-r-xl p-5">
           <p class="font-semibold text-[#334355] mb-1">🏆 Award-Winning Group</p>
           <p class="text-gray-600 text-sm leading-relaxed">
             Recognised by Southway Housing Trust for our work promoting the area — certificates,
@@ -50,142 +50,145 @@ const nextMeeting = {
           </p>
         </div>
       </div>
-
-      <div class="flex flex-col gap-5">
+      <div>
         <img
           src="/images/award.jpg"
           alt="BHNG award recognition from Southway Housing Trust"
-          class="rounded-xl shadow-md w-full"
+          class="rounded-2xl shadow-lg w-full hover:shadow-xl transition-shadow duration-300"
           loading="lazy"
         />
       </div>
     </div>
   </section>
 
-  <hr class="border-gray-200 mb-20" />
-
   <!-- ── ABOUT ─────────────────────────────────────────────────────── -->
-  <section id="about" class="mb-20 scroll-mt-20">
-    <h2 class="text-2xl sm:text-3xl font-semibold text-[#334355] mb-2 tracking-tight">About Us</h2>
-    <p class="text-gray-500 mb-8">Who we are and what we do.</p>
+  <section id="about" class="scroll-mt-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 bg-[#f5f7f9]">
+    <div class="max-w-5xl mx-auto">
 
-    <div class="grid sm:grid-cols-2 gap-10 mb-12 items-start">
-      <div>
-        <h3 class="text-lg font-semibold text-[#334355] mb-3">Who We Are</h3>
-        <p class="text-gray-600 leading-relaxed mb-4">
-          We're a group of friendly local residents who meet up on the
-          <strong>first Wednesday of every month</strong> to discuss current affairs and
-          activities in and around the Chorlton Park estate — to continue improving the area
-          for everyone.
-        </p>
-        <p class="text-gray-600 leading-relaxed mb-4">
-          We're always open to discuss topics such as <strong>Transport, Services, Businesses,
-          Green Spaces, Investment, Crime</strong> and more. What changes do you want to see
-          where you live?
-        </p>
-        <p class="text-gray-600 leading-relaxed">
-          The group is open to <strong>anyone living in the Chorlton Park area</strong> —
-          everywhere between Cundiff Road and Maitland Avenue, and between Barlow Moor Road
-          and the River Mersey.
-        </p>
+      <div class="reveal mb-10">
+        <h2 class="font-serif text-3xl sm:text-4xl text-[#334355] mb-2 tracking-tight">About Us</h2>
+        <p class="text-gray-500">Who we are and what we do.</p>
       </div>
-      <div>
-        <!-- Interactive map showing the BHNG boundary area -->
-        <div class="rounded-xl overflow-hidden shadow-md border border-gray-200">
-          <iframe
-            title="Barlow Hall Neighbourhood Group coverage area map"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1877.5!2d-2.2730!3d53.4275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1!5m2!1sen!2suk"
-            width="100%"
-            height="300"
-            style="border:0;"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+
+      <div class="grid sm:grid-cols-2 gap-10 mb-12 items-start reveal">
+        <div>
+          <h3 class="text-lg font-semibold text-[#6b3fa0] mb-3">Who We Are</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            We're a group of friendly local residents who meet up on the
+            <strong>first Wednesday of every month</strong> to discuss current affairs and
+            activities in and around the Chorlton Park estate — to continue improving the area
+            for everyone.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            We're always open to discuss topics such as <strong>Transport, Services, Businesses,
+            Green Spaces, Investment, Crime</strong> and more. What changes do you want to see
+            where you live?
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            The group is open to <strong>anyone living in the Chorlton Park area</strong> —
+            everywhere between Cundiff Road and Maitland Avenue, and between Barlow Moor Road
+            and the River Mersey.
+          </p>
         </div>
-        <p class="text-xs text-gray-500 mt-2 text-center">
-          Our area: Cundiff Road to Maitland Avenue, Barlow Moor Road to the River Mersey.
-        </p>
-      </div>
-    </div>
-
-    <!-- Committee -->
-    <div class="mb-10">
-      <h3 class="text-lg font-semibold text-[#334355] mb-1">Our Committee</h3>
-      <p class="text-gray-500 text-sm mb-5">Elected annually at our AGM.</p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-6">
-        {committee.map(member => (
-          <div class="bg-[#f5f7f9] rounded-xl p-4 text-center">
-            <div class="w-10 h-10 rounded-full bg-[#334355] text-white flex items-center justify-center text-base font-semibold mx-auto mb-2">
-              {member.name[0]}
-            </div>
-            <p class="font-medium text-[#334355] text-sm">{member.name}</p>
-            <p class="text-xs text-gray-500 mt-0.5">{member.role}</p>
+        <div>
+          <div class="rounded-2xl overflow-hidden shadow-md border border-gray-200">
+            <iframe
+              title="Barlow Hall Neighbourhood Group coverage area map"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1877.5!2d-2.2730!3d53.4275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1!5m2!1sen!2suk"
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
-        ))}
+          <p class="text-xs text-gray-500 mt-2 text-center">
+            Our area: Cundiff Road to Maitland Avenue, Barlow Moor Road to the River Mersey.
+          </p>
+        </div>
       </div>
-      <img
-        src="/images/committee-photo.jpg"
-        alt="BHNG committee members at a meeting"
-        class="rounded-xl shadow-md w-full"
-        loading="lazy"
-      />
-    </div>
 
-    <!-- Ward Councillors + Partners -->
-    <div class="grid sm:grid-cols-3 gap-5">
-      <div class="bg-[#f5f7f9] rounded-xl p-5">
-        <h3 class="font-semibold text-[#334355] mb-2">Ward Councillors</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          Chorlton Park ward councillors also attend our meetings. Find yours on the{' '}
-          <a href="https://democracy.manchester.gov.uk/mgFindMember.aspx" target="_blank" rel="noopener noreferrer"
-             class="text-[#4a7c59] underline hover:no-underline">Manchester City Council website</a>.
-        </p>
+      <!-- Committee -->
+      <div class="reveal mb-10">
+        <h3 class="text-lg font-semibold text-[#6b3fa0] mb-1">Our Committee</h3>
+        <p class="text-gray-500 text-sm mb-5">Elected annually at our AGM.</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-6">
+          {committee.map(member => (
+            <div class="bg-white rounded-xl p-4 text-center shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+              <div class="w-10 h-10 rounded-full bg-[#334355] text-white flex items-center justify-center text-base font-semibold mx-auto mb-2">
+                {member.name[0]}
+              </div>
+              <p class="font-medium text-[#334355] text-sm">{member.name}</p>
+              <p class="text-xs text-gray-500 mt-0.5">{member.role}</p>
+            </div>
+          ))}
+        </div>
+        <img
+          src="/images/committee-photo.jpg"
+          alt="BHNG committee members at a meeting"
+          class="rounded-2xl shadow-lg w-full hover:shadow-xl transition-shadow duration-300"
+          loading="lazy"
+        />
       </div>
-      <div class="border border-gray-200 rounded-xl p-5">
-        <h3 class="font-semibold text-[#334355] mb-2">Southway Housing Trust</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          Southway Housing Trust representatives attend meetings and support the group's work
-          in promoting the local area.
-        </p>
+
+      <!-- Ward Councillors + Partners -->
+      <div class="grid sm:grid-cols-3 gap-5 reveal">
+        <div class="bg-white rounded-xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+          <h3 class="font-semibold text-[#6b3fa0] mb-2">Ward Councillors</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Chorlton Park ward councillors also attend our meetings. Find yours on the{' '}
+            <a href="https://democracy.manchester.gov.uk/mgFindMember.aspx" target="_blank" rel="noopener noreferrer"
+               class="text-[#4a7c59] underline hover:no-underline">Manchester City Council website</a>.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+          <h3 class="font-semibold text-[#6b3fa0] mb-2">Southway Housing Trust</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Southway Housing Trust representatives attend meetings and support the group's work
+            in promoting the local area.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+          <h3 class="font-semibold text-[#6b3fa0] mb-2">Urban Rangers</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Manchester's Urban Rangers support the group with green space management and
+            environmental improvements across the Barlow Hall area.
+          </p>
+        </div>
       </div>
-      <div class="border border-gray-200 rounded-xl p-5">
-        <h3 class="font-semibold text-[#334355] mb-2">Urban Rangers</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          Manchester's Urban Rangers support the group with green space management and
-          environmental improvements across the Barlow Hall area.
-        </p>
-      </div>
+
     </div>
   </section>
 
-  <hr class="border-gray-200 mb-20" />
-
   <!-- ── MEETINGS ───────────────────────────────────────────────────── -->
-  <section id="meetings" class="mb-12 scroll-mt-20">
-    <h2 class="text-2xl sm:text-3xl font-semibold text-[#334355] mb-2 tracking-tight">Meetings</h2>
-    <p class="text-gray-500 mb-8">When and where we meet.</p>
+  <section id="meetings" class="scroll-mt-20 py-16">
 
-    <div class="grid sm:grid-cols-2 gap-8 mb-10 items-start">
+    <div class="reveal mb-10">
+      <h2 class="font-serif text-3xl sm:text-4xl text-[#334355] mb-2 tracking-tight">Meetings</h2>
+      <p class="text-gray-500">When and where we meet.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-8 mb-10 items-start reveal">
       <!-- Next meeting card -->
-      <div class="bg-[#334355] text-white rounded-2xl p-7">
-        <h3 class="text-lg font-semibold mb-5">Next Meeting</h3>
-        <dl class="space-y-3 text-sm">
+      <div class="bg-[#334355] text-white rounded-2xl p-7 shadow-lg">
+        <h3 class="font-serif text-2xl mb-5">Next Meeting</h3>
+        <dl class="space-y-4 text-sm">
           <div class="flex flex-col gap-0.5">
-            <dt class="text-gray-400 text-xs uppercase tracking-wide">Date</dt>
-            <dd class="font-medium">{nextMeeting.date}</dd>
+            <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Date</dt>
+            <dd class="font-medium text-base">{nextMeeting.date}</dd>
           </div>
           <div class="flex flex-col gap-0.5">
-            <dt class="text-gray-400 text-xs uppercase tracking-wide">Format</dt>
+            <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Format</dt>
             <dd class="font-medium">{nextMeeting.format}</dd>
           </div>
           <div class="flex flex-col gap-0.5">
-            <dt class="text-gray-400 text-xs uppercase tracking-wide">Venue</dt>
+            <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Venue</dt>
             <dd class="font-medium">{nextMeeting.location}</dd>
           </div>
           {nextMeeting.zoomLink && (
             <div class="flex flex-col gap-0.5">
-              <dt class="text-gray-400 text-xs uppercase tracking-wide">Zoom</dt>
+              <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Zoom</dt>
               <dd>
                 <a href={nextMeeting.zoomLink} target="_blank" rel="noopener noreferrer"
                    class="underline hover:no-underline font-medium">Join Zoom meeting</a>
@@ -193,12 +196,12 @@ const nextMeeting = {
             </div>
           )}
         </dl>
-        <div class="mt-6 pt-5 border-t border-white/20 text-sm text-gray-300">
+        <div class="mt-6 pt-5 border-t border-white/20 text-sm text-gray-300 space-y-2">
           <p>
             We meet at <strong class="text-white">5:30pm on the first Wednesday of every month</strong>.
             All Chorlton Park residents are welcome — no need to book, just turn up!
           </p>
-          <p class="mt-2">
+          <p>
             Meeting dates are announced on our <strong class="text-white">WhatsApp group</strong>.
           </p>
         </div>
@@ -206,16 +209,16 @@ const nextMeeting = {
 
       <!-- Venue info -->
       <div class="flex flex-col gap-5">
-        <div class="border border-gray-200 rounded-xl p-5">
-          <h3 class="font-semibold text-[#334355] mb-3">Venue</h3>
+        <div class="border border-gray-200 bg-white rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+          <h3 class="font-semibold text-[#4a7c59] mb-3">📍 Venue</h3>
           <p class="text-gray-600 text-sm leading-relaxed">
             <strong>Co-op Food</strong><br />
             Barlow Moor Road<br />
             Chorlton, Manchester
           </p>
         </div>
-        <div class="bg-[#f5f7f9] rounded-xl p-5">
-          <h3 class="font-semibold text-[#334355] mb-2">Stay Up to Date</h3>
+        <div class="bg-[#f5f7f9] rounded-2xl p-5">
+          <h3 class="font-semibold text-[#4a7c59] mb-2">💬 Stay Up to Date</h3>
           <p class="text-gray-600 text-sm leading-relaxed">
             Meeting dates and agendas are shared on our <strong>WhatsApp group</strong>.
             Get in touch with a committee member to be added.
@@ -225,7 +228,7 @@ const nextMeeting = {
     </div>
 
     <!-- Map -->
-    <div class="rounded-xl overflow-hidden shadow-md border border-gray-200">
+    <div class="reveal rounded-2xl overflow-hidden shadow-lg border border-gray-200">
       <iframe
         title="Co-op Food Chorlton, Barlow Moor Road location map"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d-2.2702568!3d53.4321168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487badf2ba75e69d%3A0x1075e70e2a4ac4ea!2sCo-op+Food+-+Chorlton+-+Barlow+Moor+Road!5e0!3m2!1sen!2suk!4v1!5m2!1sen!2suk"
@@ -240,6 +243,7 @@ const nextMeeting = {
     <p class="text-xs text-gray-400 mt-2">
       Co-op Food, Barlow Moor Road, Chorlton, Manchester.
     </p>
+
   </section>
 
 </Layout>

@@ -6,6 +6,8 @@
   --font-serif: 'Crimson Text', serif;
   --color-bhng-navy: #334355;
   --color-bhng-green: #4a7c59;
+  --color-bhng-purple: #6b3fa0;
+  --color-bhng-amber: #e8a020;
   --color-bhng-light: #f5f7f9;
 }
 
@@ -16,4 +18,15 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--color-bhng-navy);
+}
+
+/* Fade-in on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
