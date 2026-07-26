@@ -6,8 +6,6 @@ documentId: "e40da6b8-8ad0-4d77-b016-fa5f56785f7f"
 updatedAt: "2026-07-25T09:56:31.109Z"
 ---
 
-# Minutes 2025-11-05
-
 BHNG November meeting
 
 Time: 5 November 2025, 5-6pm

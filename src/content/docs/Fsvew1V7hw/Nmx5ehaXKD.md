@@ -6,8 +6,6 @@ documentId: "946b0184-b644-44d2-a954-a8cecd265864"
 updatedAt: "2026-07-25T10:13:10.439Z"
 ---
 
-# Summer Event
-
 # Summer Meeting May - Action plan
 
 

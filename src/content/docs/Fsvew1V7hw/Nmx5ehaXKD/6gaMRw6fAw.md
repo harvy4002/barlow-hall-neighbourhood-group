@@ -7,8 +7,6 @@ updatedAt: "2026-07-25T10:13:00.209Z"
 parentDocumentId: "946b0184-b644-44d2-a954-a8cecd265864"
 ---
 
-# Ideas
-
 * Summer solstice
 * Bouncy castle
 * People to create something for the event

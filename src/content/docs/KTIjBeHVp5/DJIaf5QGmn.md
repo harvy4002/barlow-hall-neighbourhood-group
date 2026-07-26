@@ -6,8 +6,6 @@ documentId: "e8b59c13-66a8-4033-bcee-68e0cf96eb42"
 updatedAt: "2026-07-25T10:06:08.309Z"
 ---
 
-# Feedback from online survey 2025
-
 **Survey Analysis: Barlow Hall Estate Community Feedback (25 Responses)**
 
 **Overall Summary:**

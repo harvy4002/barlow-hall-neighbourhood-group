@@ -6,8 +6,6 @@ documentId: "bda672e7-53cf-403b-9eab-593fcc58b902"
 updatedAt: "2026-07-25T09:40:10.368Z"
 ---
 
-# What is Outline
-
 Outline is a place to build your team knowledge base, you could think of it like your team’s shared library – a place for important documentation, notes, and ideas to live and be discovered. Some things you might want to keep in Outline include:
 
 

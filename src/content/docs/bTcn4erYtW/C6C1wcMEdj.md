@@ -6,8 +6,6 @@ documentId: "62ad6af0-a74f-42ae-9173-59864024aba3"
 updatedAt: "2026-07-25T09:56:20.697Z"
 ---
 
-# Minutes 2026-02-04
-
 Hey everyone! Quick recap from our latest meeting. Lots of great discussions on community events, finances, and improving our communication!
 
 #### **🌟 Highlights:**

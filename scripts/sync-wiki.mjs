@@ -185,7 +185,10 @@ async function main() {
 
       const { data: rawMarkdown } = await api('documents.export', { id: doc.id });
       // Outline sometimes returns literal \n escape sequences instead of real newlines
-      const cleaned = rawMarkdown.replace(/\\n/g, '\n');
+      const unescaped = rawMarkdown.replace(/\\n/g, '\n');
+      // Outline includes the document title as a # heading — strip it since we render
+      // the title ourselves in the page header to avoid it appearing twice
+      const cleaned = unescaped.replace(/^#\s+.+\n+/, '');
       const markdown = await localiseImages(cleaned);
 
       writePage(filePath, {

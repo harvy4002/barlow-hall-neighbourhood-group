@@ -6,8 +6,6 @@ documentId: "3910fce1-d393-4622-9bfb-108ef47b33ad"
 updatedAt: "2026-07-25T09:56:26.341Z"
 ---
 
-# AGM 2025-10-06
-
 AGM summary notes and agenda for next general meeting
 
 # AGM held on 6 Oct 2025, 7-8:30pm

@@ -6,8 +6,6 @@ documentId: "1d119b9e-3a83-448e-ad28-d85298b39245"
 updatedAt: "2026-07-25T09:56:01.955Z"
 ---
 
-# Minutes 2026-04-01
-
 Attended: Fi, Eran, Colette, Tess
 
 Agenda

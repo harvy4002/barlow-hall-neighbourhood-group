@@ -6,8 +6,6 @@ documentId: "e2357efb-ba13-4939-bee5-0fe83a469c5d"
 updatedAt: "2026-07-25T09:40:10.231Z"
 ---
 
-# Getting Started
-
 Some ideas to get you and your team started with learning the basics of Outline, feel free to check them off as you go!
 
 ## Learn the basics

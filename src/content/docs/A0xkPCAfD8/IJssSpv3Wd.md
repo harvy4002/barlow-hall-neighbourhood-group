@@ -6,8 +6,6 @@ documentId: "86d8da99-0dc4-4f10-a0f1-c52495c252ca"
 updatedAt: "2026-07-25T09:40:10.159Z"
 ---
 
-# Our Editor
-
 The heart of Outline is the document editor. We let you write in whichever way you prefer – be it Markdown, WYSIWYG, or taking advantage of the many keyboard shortcuts (Type `?` to see them all).
 
 ## Markdown

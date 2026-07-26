@@ -7,8 +7,6 @@ updatedAt: "2026-07-25T10:12:59.467Z"
 parentDocumentId: "946b0184-b644-44d2-a954-a8cecd265864"
 ---
 
-# Plan
-
 **BHNG Summer community event**
 
 > **Date:** Saturday 6 June
