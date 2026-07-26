@@ -64,7 +64,7 @@ function formatDate(iso: string) {
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {collections.map(col => (
               <a
-                href={`/wiki?collection=${col.slug}`}
+                href={`/docs?collection=${col.slug}`}
                 class="group block bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200"
               >
                 <div class="flex items-start justify-between mb-2">
@@ -89,7 +89,7 @@ function formatDate(iso: string) {
               .sort((a, b) => a.data.title.localeCompare(b.data.title))
               .map(entry => (
                 <a
-                  href={`/wiki/${navSlug(entry.id)}`}
+                  href={`/docs/${navSlug(entry.id)}`}
                   class="flex items-center justify-between px-5 py-3.5 bg-white hover:bg-[#f5f7f9] transition-colors group"
                 >
                   <div>
@@ -115,7 +115,7 @@ function formatDate(iso: string) {
               {recent.map(entry => (
                 <li>
                   <a
-                    href={`/wiki/${navSlug(entry.id)}`}
+                    href={`/docs/${navSlug(entry.id)}`}
                     class="flex items-center justify-between rounded-xl px-4 py-3 bg-[#f5f7f9] hover:bg-gray-100 transition-colors group"
                   >
                     <span class="text-sm font-medium text-[#334355] group-hover:text-[#4a7c59] transition-colors">
