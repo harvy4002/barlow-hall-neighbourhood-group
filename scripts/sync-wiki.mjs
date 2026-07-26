@@ -184,7 +184,9 @@ async function main() {
       const filePath = join(WIKI_DIR, colSlug, `${relPath}.md`);
 
       const { data: rawMarkdown } = await api('documents.export', { id: doc.id });
-      const markdown = await localiseImages(rawMarkdown);
+      // Outline sometimes returns literal \n escape sequences instead of real newlines
+      const cleaned = rawMarkdown.replace(/\\n/g, '\n');
+      const markdown = await localiseImages(cleaned);
 
       writePage(filePath, {
         title: doc.title,

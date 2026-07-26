@@ -11,13 +11,18 @@ parentDocumentId: "946b0184-b644-44d2-a954-a8cecd265864"
 
 **BHNG Summer community event**
 
-> **Date:** Saturday 6 June\n**Location:** Mottram Road green space\n**Host:** Barlow Hall Neighbourhood Group\n**Proposed duration:** 1:00 – 4:00 pm
+> **Date:** Saturday 6 June
+**Location:** Mottram Road green space
+**Host:** Barlow Hall Neighbourhood Group
+**Proposed duration:** 1:00 – 4:00 pm
 
 # Event overview
 
-The BHNG summer community event is a family-friendly, inclusive gathering designed to bring local residents together and build social connection across the neighbourhood. \n
+The BHNG summer community event is a family-friendly, inclusive gathering designed to bring local residents together and build social connection across the neighbourhood. 
 
-The event will provide opportunities for connection, wellbeing, learning, and fun through activities, entertainment, and refreshments in a relaxed and welcoming environment.\n
+
+The event will provide opportunities for connection, wellbeing, learning, and fun through activities, entertainment, and refreshments in a relaxed and welcoming environment.
+
 
 The event aims to strengthen community relationships, increase engagement with BHNG, and create a positive shared experience for residents of all ages.
 
@@ -35,7 +40,8 @@ Intro about BHNG… who we are, what we do, how to get involved (copy from newsl
 
 # Target audience
 
-All BHNG residents\n
+All BHNG residents
+
 
 # BHNG information and engagement stall
 
@@ -78,7 +84,8 @@ Where possible, local groups and organisations will be invited to take part by:
 * Running activities or demonstrations
 * Providing performances or entertainment
 
-\n
+
+
 
 This will strengthen local partnerships and showcase available support and opportunities within the community.
 
@@ -123,11 +130,13 @@ Costs include:
 |      |      |       |
 |      |      |       |
 
-\n
+
+
 
 Opportunities for sponsorship, in-kind donations, or volunteer support will be explored to manage costs.
 
-\n
+
+
 
 # Evaluation and outcomes
 
@@ -140,15 +149,19 @@ Success will be measured through:
 
 Feedback will help inform future community events.
 
-\n
+
+
 
 # Conclusion
 
 The BHNG Summer Community Event offers an excellent opportunity to bring residents together, strengthen community ties, and create a positive and memorable experience. With thoughtful planning and community involvement, the event will support BHNG’s commitment to building strong, connected neighbourhoods.
 
-\n
 
-# Evaluation\n\n
+
+
+# Evaluation
+
+
 
 # Actions
 

@@ -18,7 +18,10 @@ About 30 neighbours attended from across the neighbourhood and were greeted with
 
 
 1. After Fi introduced the group, we heard what people liked in the neighbourhood: key themes were calm and quiet, access to green spaces, diverse population, sense of community and neighbours support.
-2. In the formal part of the evening, assisted by councillor Dave Rawson, we elected a new committee:\nChair: Fi; Treasurer: Phil; Secretary: Eran\nOther committee members: Colette, Derya, Harvinder, Mike, Nigel, Ron, Tess\nWe approved the constitution <link>
+2. In the formal part of the evening, assisted by councillor Dave Rawson, we elected a new committee:
+Chair: Fi; Treasurer: Phil; Secretary: Eran
+Other committee members: Colette, Derya, Harvinder, Mike, Nigel, Ron, Tess
+We approved the constitution <link>
 3. In breakout tables we discussed issues and ideas on the following themes:
 4. 
    1. environment, gardening and green spaces

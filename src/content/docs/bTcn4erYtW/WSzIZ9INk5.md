@@ -65,14 +65,17 @@ Not discussed at length beyond acknowledging the need for non-digital communicat
 
 No other issues raised.
 
-\n
+
+
 
 **Our next meeting: Wednesday, 3 Dec 2025, 5-6pm, room above co-op**
 
-\n
+
+
 
 Signed: _____________________
 
-\n
+
+
 
 Date: _______________________

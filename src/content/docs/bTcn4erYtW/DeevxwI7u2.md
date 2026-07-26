@@ -17,7 +17,8 @@ Agenda
 * Newsletter
 * Money banks
 * Public liability
-* Green group\n
+* Green group
+
 
 PART 1: Summer event Sat 6 June 1-4 pm
 
@@ -38,7 +39,8 @@ Activities:
 
 Budget: Unity Arts £180, music cost TBC but allow £500, ice cream van cost TBC, catering cost TBC, road closure £160
 
-\n
+
+
 
 PART 2: Everything else!
 
@@ -49,7 +51,8 @@ PART 2: Everything else!
 4. Public liability insurance: Colette has got quotes from 3 organisations, agreed at last meeting to go with Ripe Insurance around £82. Has since checked cover and that covers us for £5million, only £97 for £10 million cover. This is for annual cover not just the summer event.
 5. Finances: Bank has approx £2000. Planned costs include: Fi expense claim around £40 (submitted to Phil), summer event costs TBC but around £1000, newsletter printing £300, public liability insurance £100, banner printed for events £TBC, bulb planting £300. NIF found is open for applications now.
 
-\n
+
+
 
 ACTIONS:
 
