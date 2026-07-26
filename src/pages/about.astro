@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const committee = [
+  { name: 'Fiona', role: 'Chair' },
+  { name: 'Phil', role: 'Treasurer' },
+  { name: 'Eran', role: 'Secretary' },
+  { name: 'Colette', role: 'Committee Member' },
+  { name: 'Derya', role: 'Committee Member' },
+  { name: 'Harvinder', role: 'Committee Member' },
+  { name: 'Mike', role: 'Committee Member' },
+  { name: 'Nigel', role: 'Committee Member' },
+  { name: 'Ron', role: 'Committee Member' },
+  { name: 'Tess', role: 'Committee Member' },
+];
+---
+
+<Layout
+  title="About"
+  description="About the Barlow Hall Neighbourhood Group — who we are, what we do, and how to get involved."
+  heroImage="/images/hero-about.jpg"
+  heroAlt="The Barlow Hall area, Chorlton Park, Manchester"
+>
+  <h1 class="text-3xl sm:text-4xl font-semibold text-[#334355] mb-8 tracking-tight">About Us</h1>
+
+  <div class="grid sm:grid-cols-2 gap-10 mb-12">
+    <div>
+      <h2 class="text-xl font-semibold text-[#334355] mb-4">Who We Are</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        We're a group of friendly local residents who meet up on the <strong>first Monday of every
+        month</strong> to discuss current affairs and activities happening in and around the
+        Chorlton Park estate — to continue improving the area for everyone.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        We're always open to discuss any topics such as <strong>Transport, Services, Businesses,
+        Green Spaces, Investment, Crime</strong> and more. What changes do you want to see happen
+        where you live?
+      </p>
+      <p class="text-gray-600 leading-relaxed">
+        The group is open to <strong>anyone living in the Chorlton Park area</strong> shown on the
+        map — everywhere between Cundiff Road to Maitland Avenue, and between Barlow Moor Road and
+        the River Mersey.
+      </p>
+    </div>
+
+    <div>
+      <img
+        src="/images/bhng-map.jpg"
+        alt="Map of the Barlow Hall Neighbourhood Group coverage area"
+        class="rounded-xl shadow-md w-full"
+        loading="lazy"
+      />
+      <p class="text-sm text-gray-500 mt-2 text-center">
+        Our coverage area: Cundiff Rd → Maitland Ave, Barlow Moor Rd → River Mersey.
+      </p>
+    </div>
+  </div>
+
+  <!-- Committee -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold text-[#334355] mb-2">Our Committee</h2>
+    <p class="text-gray-500 text-sm mb-6">
+      A committee is elected every year at our Annual General Meeting.
+    </p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      {committee.map(member => (
+        <div class="bg-[#f5f7f9] rounded-xl p-4 text-center">
+          <div class="w-12 h-12 rounded-full bg-[#334355] text-white flex items-center justify-center text-lg font-semibold mx-auto mb-3">
+            {member.name[0]}
+          </div>
+          <p class="font-medium text-[#334355]">{member.name}</p>
+          <p class="text-xs text-gray-500 mt-0.5">{member.role}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Ward Councillors -->
+  <section class="bg-[#f5f7f9] rounded-2xl p-6 mb-12">
+    <h2 class="text-xl font-semibold text-[#334355] mb-3">Ward Councillors</h2>
+    <p class="text-gray-600 leading-relaxed">
+      Ward Councillors for Chorlton Park also attend our meetings. If you'd like to find out
+      who your ward councillors are, visit the
+      <a
+        href="https://www.manchester.gov.uk/councillors"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[#4a7c59] underline hover:no-underline"
+      >Manchester City Council website</a>.
+    </p>
+  </section>
+
+  <!-- Partners -->
+  <section>
+    <h2 class="text-xl font-semibold text-[#334355] mb-4">Our Partners</h2>
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-[#334355] mb-2">Southway Housing Trust</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Southway Housing Trust representatives attend meetings and support the group. BHNG
+          received recognition from Southway for the work done in promoting the local area.
+        </p>
+      </div>
+      <div class="border border-gray-200 rounded-xl p-5">
+        <h3 class="font-semibold text-[#334355] mb-2">Urban Rangers</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          Manchester's Urban Rangers support the group with green space management and
+          environmental improvements across the Barlow Hall area.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

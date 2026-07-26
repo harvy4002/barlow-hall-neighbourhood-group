@@ -1,0 +1,172 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  heroImage?: string;
+  heroAlt?: string;
+}
+
+const {
+  title,
+  description = 'Barlow Hall Neighbourhood Group — an award-winning community group supporting the Barlow Hall area of Chorlton Park, Manchester.',
+  heroImage,
+  heroAlt = '',
+} = Astro.props;
+
+const siteName = 'Barlow Hall Neighbourhood Group';
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/meetings', label: 'Meetings' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Barlow Hall, Neighbourhood Group, Chorlton, Chorlton Park, Manchester, community" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title === siteName ? title : `${title} | ${siteName}`} />
+    <meta property="og:description" content={description} />
+    <title>{title === siteName ? title : `${title} | ${siteName}`}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white">
+
+    <!-- Header & Nav -->
+    <header class="bg-[#334355] text-white shadow-md sticky top-0 z-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="text-lg font-semibold tracking-wide hover:text-gray-200 transition-colors leading-tight">
+            Barlow Hall<br class="sm:hidden" /> <span class="text-sm font-normal opacity-80">Neighbourhood Group</span>
+          </a>
+          <!-- Desktop nav -->
+          <nav class="hidden sm:flex gap-6" aria-label="Main navigation">
+            {navLinks.map(link => {
+              const isActive = link.href === '/'
+                ? currentPath === '/'
+                : currentPath.startsWith(link.href);
+              return (
+                <a
+                  href={link.href}
+                  class={`text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 ${
+                    isActive
+                      ? 'border-white text-white'
+                      : 'border-transparent text-gray-300 hover:text-white hover:border-gray-400'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </nav>
+          <!-- Mobile hamburger -->
+          <button
+            id="menu-btn"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="sm:hidden p-2 rounded-md hover:bg-white/10 transition-colors"
+          >
+            <span class="block w-6 h-0.5 bg-white mb-1.5"></span>
+            <span class="block w-6 h-0.5 bg-white mb-1.5"></span>
+            <span class="block w-6 h-0.5 bg-white"></span>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile nav -->
+      <nav id="mobile-menu" class="hidden sm:hidden bg-[#2a3a47] px-4 pb-4" aria-label="Mobile navigation">
+        {navLinks.map(link => {
+          const isActive = link.href === '/'
+            ? currentPath === '/'
+            : currentPath.startsWith(link.href);
+          return (
+            <a
+              href={link.href}
+              class={`block py-2 text-sm font-medium uppercase tracking-wide transition-colors ${
+                isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+              }`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })}
+      </nav>
+    </header>
+
+    <!-- Hero banner -->
+    {heroImage && (
+      <div
+        class="h-48 sm:h-64 bg-cover bg-center relative"
+        style={`background-image: url('${heroImage}');`}
+        role="img"
+        aria-label={heroAlt}
+      >
+        <div class="absolute inset-0 bg-[#334355]/40"></div>
+      </div>
+    )}
+
+    <!-- Main content -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#334355] text-white mt-12">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-sm text-gray-300">
+            &copy; {new Date().getFullYear()} Barlow Hall Neighbourhood Group. Chorlton, Manchester.
+          </p>
+          <div class="flex items-center gap-5">
+            <a
+              href="https://twitter.com/BarlowHallGroup"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-300 hover:text-white transition-colors text-sm"
+              aria-label="Follow us on X (Twitter)"
+            >
+              𝕏 Twitter
+            </a>
+            <a
+              href="https://www.instagram.com/barlowhallneighbourhoodgroup/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-300 hover:text-white transition-colors text-sm"
+              aria-label="Follow us on Instagram"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/BarlowHallNeighbourhoodGroup"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-300 hover:text-white transition-colors text-sm"
+              aria-label="Like us on Facebook"
+            >
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        const isOpen = menu?.classList.toggle('hidden') === false;
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+    </script>
+  </body>
+</html>
