@@ -1,0 +1,62 @@
+name: Sync Wiki from Outline
+
+# Triggers:
+#   1. Hourly schedule — catches any Outline edits within an hour
+#   2. Manual trigger — run from GitHub Actions UI anytime
+#   3. repository_dispatch — for Outline webhooks (near-instant publish)
+#
+# To set up the Outline webhook for near-instant syncing:
+#   1. Create a GitHub PAT with the "workflow" scope
+#   2. In Outline → Settings → Webhooks, add a new webhook:
+#        URL:     https://api.github.com/repos/{owner}/{repo}/dispatches
+#        Method:  POST
+#        Headers: Authorization: Bearer <your-PAT>
+#                 Content-Type: application/json
+#        Body:    {"event_type": "outline-update"}
+#      Subscribe to: documents.publish, documents.update, documents.delete
+
+on:
+  schedule:
+    - cron: '0 * * * *'     # Every hour at :00
+  workflow_dispatch:          # Manual trigger from GitHub UI
+  repository_dispatch:
+    types: [outline-update]  # Triggered by Outline webhook
+
+permissions:
+  contents: write             # Needed to commit synced content back to main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Use GITHUB_TOKEN so the commit triggers the deploy workflow
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync wiki content from Outline
+        run: node scripts/sync-wiki.mjs
+        env:
+          OUTLINE_URL: ${{ secrets.OUTLINE_URL }}
+          OUTLINE_API_KEY: ${{ secrets.OUTLINE_API_KEY }}
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/content/wiki/ public/wiki-images/
+          if git diff --staged --quiet; then
+            echo "No wiki changes detected — skipping commit"
+          else
+            git commit -m "chore: sync wiki content from Outline"
+            git push
+            echo "Changes committed and pushed — deploy workflow will rebuild the site"
+          fi

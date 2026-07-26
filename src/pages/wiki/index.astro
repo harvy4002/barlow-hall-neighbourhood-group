@@ -1,0 +1,136 @@
+---
+import WikiLayout from '../../layouts/WikiLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('wiki');
+
+// Group by collection, count docs
+const collectionMap = new Map<string, { name: string; slug: string; count: number }>();
+for (const entry of allEntries) {
+  const key = entry.data.collectionSlug;
+  if (!collectionMap.has(key)) {
+    collectionMap.set(key, {
+      name: entry.data.collection,
+      slug: entry.data.collectionSlug,
+      count: 0,
+    });
+  }
+  collectionMap.get(key)!.count++;
+}
+
+const collections = Array.from(collectionMap.values()).sort((a, b) =>
+  a.name.localeCompare(b.name)
+);
+
+// 5 most recently updated entries across all collections
+const recent = [...allEntries]
+  .sort((a, b) => new Date(b.data.updatedAt).getTime() - new Date(a.data.updatedAt).getTime())
+  .slice(0, 5);
+
+const navSlug = (id: string) => id.replace(/\.md$/, '');
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric',
+  });
+}
+---
+
+<WikiLayout title="Wiki">
+  <Fragment slot="breadcrumb">
+    <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
+      <span class="font-medium text-[#334355]">Wiki</span>
+    </nav>
+  </Fragment>
+
+  <div>
+    <div class="mb-8">
+      <h1 class="font-serif text-3xl sm:text-4xl text-[#334355] mb-2 tracking-tight">Wiki</h1>
+      <p class="text-gray-500">
+        Meeting minutes, group notes, and community information for Barlow Hall Neighbourhood Group.
+      </p>
+    </div>
+
+    {collections.length === 0 ? (
+      <div class="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-12 text-center">
+        <p class="text-gray-500 text-sm">No wiki content has been synced yet.</p>
+        <p class="text-gray-400 text-xs mt-1">Run <code class="bg-gray-100 px-1 rounded">npm run sync-wiki</code> to pull content from Outline.</p>
+      </div>
+    ) : (
+      <div class="space-y-10">
+        <!-- Collections grid -->
+        <section>
+          <h2 class="text-sm font-bold uppercase tracking-widest text-[#e8a020] mb-4">Collections</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {collections.map(col => (
+              <a
+                href={`/wiki?collection=${col.slug}`}
+                class="group block bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+              >
+                <div class="flex items-start justify-between mb-2">
+                  <h3 class="font-semibold text-[#334355] group-hover:text-[#4a7c59] transition-colors">
+                    {col.name}
+                  </h3>
+                  <span class="text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5 shrink-0 ml-2">
+                    {col.count} {col.count === 1 ? 'page' : 'pages'}
+                  </span>
+                </div>
+                <p class="text-xs text-gray-400">Browse {col.name} →</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <!-- All pages list, filterable by collection via URL param -->
+        <section>
+          <h2 class="text-sm font-bold uppercase tracking-widest text-[#e8a020] mb-4">All Pages</h2>
+          <div class="divide-y divide-gray-100 rounded-2xl border border-gray-200 overflow-hidden">
+            {allEntries
+              .sort((a, b) => a.data.title.localeCompare(b.data.title))
+              .map(entry => (
+                <a
+                  href={`/wiki/${navSlug(entry.id)}`}
+                  class="flex items-center justify-between px-5 py-3.5 bg-white hover:bg-[#f5f7f9] transition-colors group"
+                >
+                  <div>
+                    <span class="text-sm font-medium text-[#334355] group-hover:text-[#4a7c59] transition-colors">
+                      {entry.data.title}
+                    </span>
+                    <span class="ml-2 text-xs text-gray-400">{entry.data.collection}</span>
+                  </div>
+                  <span class="text-xs text-gray-400 shrink-0 ml-4">
+                    {formatDate(entry.data.updatedAt)}
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- Recently updated -->
+        {recent.length > 0 && (
+          <section>
+            <h2 class="text-sm font-bold uppercase tracking-widest text-[#e8a020] mb-4">Recently Updated</h2>
+            <ul class="space-y-2">
+              {recent.map(entry => (
+                <li>
+                  <a
+                    href={`/wiki/${navSlug(entry.id)}`}
+                    class="flex items-center justify-between rounded-xl px-4 py-3 bg-[#f5f7f9] hover:bg-gray-100 transition-colors group"
+                  >
+                    <span class="text-sm font-medium text-[#334355] group-hover:text-[#4a7c59] transition-colors">
+                      {entry.data.title}
+                    </span>
+                    <span class="text-xs text-gray-400 shrink-0 ml-4">
+                      {formatDate(entry.data.updatedAt)}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
+    )}
+  </div>
+</WikiLayout>

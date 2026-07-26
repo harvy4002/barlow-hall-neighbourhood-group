@@ -1,0 +1,229 @@
+---
+import '../styles/global.css';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentSlug?: string;
+}
+
+const {
+  title,
+  description = 'Barlow Hall Neighbourhood Group wiki — meeting minutes, group notes and community information.',
+  currentSlug,
+} = Astro.props;
+
+const siteName = 'Barlow Hall Neighbourhood Group';
+
+// Build sidebar nav tree from all wiki entries
+const allEntries = await getCollection('wiki');
+
+// Group entries by collection
+const collectionMap = new Map<string, { name: string; entries: typeof allEntries }>();
+for (const entry of allEntries) {
+  const key = entry.data.collectionSlug;
+  if (!collectionMap.has(key)) {
+    collectionMap.set(key, { name: entry.data.collection, entries: [] });
+  }
+  collectionMap.get(key)!.entries.push(entry);
+}
+
+// For each collection, build a two-level tree (top-level + children)
+type NavDoc = {
+  id: string;
+  title: string;
+  documentId: string;
+  children: NavDoc[];
+};
+
+function buildNavTree(entries: typeof allEntries): NavDoc[] {
+  const byDocId = new Map(entries.map(e => [e.data.documentId, e]));
+  const roots: NavDoc[] = [];
+  const childrenMap = new Map<string, NavDoc[]>();
+
+  for (const entry of entries) {
+    const node: NavDoc = {
+      id: entry.id,
+      title: entry.data.title,
+      documentId: entry.data.documentId,
+      children: [],
+    };
+
+    const parentId = entry.data.parentDocumentId;
+    if (parentId && byDocId.has(parentId)) {
+      if (!childrenMap.has(parentId)) childrenMap.set(parentId, []);
+      childrenMap.get(parentId)!.push(node);
+    } else {
+      roots.push(node);
+    }
+  }
+
+  // Attach children to their parent nodes
+  for (const node of [...roots, ...Array.from(childrenMap.values()).flat()]) {
+    node.children = childrenMap.get(node.documentId) ?? [];
+  }
+
+  return roots;
+}
+
+const navSlug = (id: string) => id.replace(/\.md$/, '');
+const isActive = (id: string) => navSlug(id) === currentSlug;
+
+const collections = Array.from(collectionMap.entries()).map(([slug, data]) => ({
+  slug,
+  name: data.name,
+  tree: buildNavTree(data.entries),
+}));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={`${title} | ${siteName}`} />
+    <meta property="og:description" content={description} />
+    <title>{title} | {siteName}</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white">
+
+    <!-- Header -->
+    <header class="bg-[#334355] text-white shadow-md sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/">
+            <img
+              src="/images/logo-horizontal.jpg"
+              alt="Barlow Hall Neighbourhood Group"
+              class="h-10 w-auto rounded"
+            />
+          </a>
+          <nav class="hidden sm:flex gap-6" aria-label="Main navigation">
+            <a href="/#home"     class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-400">Home</a>
+            <a href="/#about"    class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-400">About</a>
+            <a href="/#meetings" class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-400">Meetings</a>
+            <a href="/wiki"      class="text-sm font-medium tracking-wide uppercase transition-colors pb-1 border-b-2 border-white text-white">Wiki</a>
+          </nav>
+          <button
+            id="wiki-menu-btn"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="wiki-mobile-menu"
+            class="sm:hidden p-2 rounded-md hover:bg-white/10 transition-colors"
+          >
+            <span class="block w-6 h-0.5 bg-white mb-1.5"></span>
+            <span class="block w-6 h-0.5 bg-white mb-1.5"></span>
+            <span class="block w-6 h-0.5 bg-white"></span>
+          </button>
+        </div>
+      </div>
+      <nav id="wiki-mobile-menu" class="hidden sm:hidden bg-[#2a3a47] px-4 pb-4" aria-label="Mobile navigation">
+        <a href="/#home"     class="block py-2 text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-white transition-colors">Home</a>
+        <a href="/#about"    class="block py-2 text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-white transition-colors">About</a>
+        <a href="/#meetings" class="block py-2 text-sm font-medium uppercase tracking-wide text-gray-300 hover:text-white transition-colors">Meetings</a>
+        <a href="/wiki"      class="block py-2 text-sm font-medium uppercase tracking-wide text-white transition-colors">Wiki</a>
+      </nav>
+    </header>
+
+    <!-- Breadcrumb bar -->
+    <div class="bg-[#f5f7f9] border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-2">
+      <div class="max-w-7xl mx-auto">
+        <slot name="breadcrumb" />
+      </div>
+    </div>
+
+    <!-- Two-column layout: sidebar + content -->
+    <div class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex gap-8">
+
+      <!-- Sidebar -->
+      <aside class="hidden lg:block w-64 shrink-0">
+        <div class="sticky top-24 overflow-y-auto max-h-[calc(100vh-8rem)]">
+          <a href="/wiki" class="flex items-center gap-2 mb-5 text-[#334355] font-semibold hover:text-[#4a7c59] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            Wiki Home
+          </a>
+
+          {collections.map(col => (
+            <div class="mb-6">
+              <p class="text-xs font-bold uppercase tracking-widest text-[#e8a020] mb-2 px-2">
+                {col.name}
+              </p>
+              <ul class="space-y-0.5">
+                {col.tree.map(node => (
+                  <li>
+                    <a
+                      href={`/wiki/${navSlug(node.id)}`}
+                      class:list={[
+                        'block px-2 py-1.5 text-sm rounded-lg transition-colors',
+                        isActive(node.id)
+                          ? 'bg-[#334355] text-white font-medium'
+                          : 'text-gray-600 hover:bg-gray-100 hover:text-[#334355]',
+                      ]}
+                    >
+                      {node.title}
+                    </a>
+                    {node.children.length > 0 && (
+                      <ul class="ml-3 mt-0.5 space-y-0.5 border-l border-gray-200 pl-3">
+                        {node.children.map(child => (
+                          <li>
+                            <a
+                              href={`/wiki/${navSlug(child.id)}`}
+                              class:list={[
+                                'block px-2 py-1.5 text-sm rounded-lg transition-colors',
+                                isActive(child.id)
+                                  ? 'bg-[#334355] text-white font-medium'
+                                  : 'text-gray-600 hover:bg-gray-100 hover:text-[#334355]',
+                              ]}
+                            >
+                              {child.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 min-w-0">
+        <slot />
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#334355] text-white mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-sm text-gray-300">
+            &copy; {new Date().getFullYear()} Barlow Hall Neighbourhood Group. Chorlton, Manchester.
+          </p>
+          <div class="flex items-center gap-5">
+            <a href="https://x.com/BarlowHallGroup" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors text-sm">𝕏 Twitter</a>
+            <a href="https://www.instagram.com/barlowhallneighbourhoodgroup/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors text-sm">Instagram</a>
+            <a href="https://www.facebook.com/BarlowHallNeighbourhoodGroup" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors text-sm">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('wiki-menu-btn');
+      const menu = document.getElementById('wiki-mobile-menu');
+      btn?.addEventListener('click', () => {
+        const isOpen = menu?.classList.toggle('hidden') === false;
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+    </script>
+  </body>
+</html>

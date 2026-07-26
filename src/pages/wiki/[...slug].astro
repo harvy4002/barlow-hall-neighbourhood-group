@@ -1,0 +1,75 @@
+---
+import WikiLayout from '../../layouts/WikiLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('wiki');
+  return entries.map(entry => ({
+    params: { slug: entry.id.replace(/\.md$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, collection, collectionSlug, updatedAt } = entry.data;
+const currentSlug = entry.id.replace(/\.md$/, '');
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric',
+  });
+}
+---
+
+<WikiLayout title={title} currentSlug={currentSlug}>
+  <Fragment slot="breadcrumb">
+    <nav class="flex items-center gap-1.5 text-sm text-gray-500" aria-label="Breadcrumb">
+      <a href="/wiki" class="hover:text-[#334355] transition-colors">Wiki</a>
+      <span>›</span>
+      <a href="/wiki" class="hover:text-[#334355] transition-colors">{collection}</a>
+      <span>›</span>
+      <span class="font-medium text-[#334355]">{title}</span>
+    </nav>
+  </Fragment>
+
+  <article>
+    <!-- Page header -->
+    <div class="mb-8 pb-6 border-b border-gray-200">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#e8a020] mb-2">{collection}</p>
+      <h1 class="font-serif text-3xl sm:text-4xl text-[#334355] tracking-tight">{title}</h1>
+      <p class="mt-2 text-sm text-gray-400">Last updated {formatDate(updatedAt)}</p>
+    </div>
+
+    <!-- Markdown content -->
+    <div class="prose prose-slate max-w-none
+      prose-headings:font-serif prose-headings:text-[#334355]
+      prose-a:text-[#4a7c59] prose-a:no-underline hover:prose-a:underline
+      prose-strong:text-[#334355]
+      prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded prose-code:text-sm
+      prose-pre:bg-[#1e2a35] prose-pre:text-gray-100
+      prose-img:rounded-xl prose-img:shadow-md
+      prose-hr:border-gray-200
+      prose-blockquote:border-[#e8a020] prose-blockquote:text-gray-500">
+      <Content />
+    </div>
+
+    <!-- Back link -->
+    <div class="mt-12 pt-6 border-t border-gray-200">
+      <a href="/wiki" class="inline-flex items-center gap-1.5 text-sm text-[#4a7c59] hover:text-[#334355] transition-colors font-medium">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Wiki
+      </a>
+    </div>
+  </article>
+</WikiLayout>
+
+<style is:global>
+  /* Ensure prose tables are responsive */
+  .prose table {
+    display: block;
+    overflow-x: auto;
+  }
+</style>
