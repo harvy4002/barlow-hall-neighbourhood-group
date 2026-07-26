@@ -5,8 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://harvy4002.github.io',
-  base: '/barlow-hall-neighbourhood-group',
+  site: 'https://bhng.org.uk',
   vite: {
     plugins: [tailwindcss()]
   }
