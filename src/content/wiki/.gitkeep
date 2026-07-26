@@ -1,3 +1,0 @@
-# This directory is populated by `npm run sync-wiki`.
-# It is committed so GitHub Pages deploys pick up the latest content
-# after each sync workflow run.
