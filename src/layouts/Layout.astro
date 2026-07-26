@@ -42,8 +42,12 @@ const navLinks = [
     <header class="bg-[#334355] text-white shadow-md sticky top-0 z-50">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
-          <a href="/" class="text-lg font-semibold tracking-wide hover:text-gray-200 transition-colors leading-tight">
-            Barlow Hall<br class="sm:hidden" /> <span class="text-sm font-normal opacity-80">Neighbourhood Group</span>
+          <a href="#home" class="shrink-0">
+            <img
+              src="/images/logo-horizontal.jpg"
+              alt="Barlow Hall Neighbourhood Group"
+              class="h-10 w-auto rounded"
+            />
           </a>
           <!-- Desktop nav -->
           <nav class="hidden sm:flex gap-6" aria-label="Main navigation">
@@ -84,16 +88,13 @@ const navLinks = [
     </header>
 
     <!-- Hero banner -->
-    {heroImage && (
-      <div
-        class="h-48 sm:h-64 bg-cover bg-center relative"
-        style={`background-image: url('${heroImage}');`}
-        role="img"
-        aria-label={heroAlt}
-      >
-        <div class="absolute inset-0 bg-[#334355]/40"></div>
-      </div>
-    )}
+    <div class="bg-[#f8f8f6] border-b border-gray-200 py-10 sm:py-14 flex flex-col items-center justify-center text-center px-4">
+      <img
+        src="/images/logo-stacked.png"
+        alt="Barlow Hall Neighbourhood Group"
+        class="w-44 sm:w-56 h-auto mx-auto drop-shadow-sm"
+      />
+    </div>
 
     <!-- Main content -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10">
