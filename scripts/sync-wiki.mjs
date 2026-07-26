@@ -34,6 +34,11 @@ if (!OUTLINE_URL || !OUTLINE_API_KEY) {
 const WIKI_DIR = join(ROOT, 'src/content/docs');
 const IMAGES_DIR = join(ROOT, 'public/wiki-images');
 
+// Collections whose names match any entry in this list (case-insensitive) are
+// excluded from the public site. Add Outline's default collections or any
+// internal-only collections here.
+const EXCLUDED_COLLECTIONS = ['welcome'];
+
 // Wipe and recreate wiki content on each sync so deleted Outline pages don't linger
 if (existsSync(WIKI_DIR)) {
   rmSync(WIKI_DIR, { recursive: true });
@@ -162,6 +167,11 @@ async function main() {
   let totalDocs = 0;
 
   for (const col of collections) {
+    if (EXCLUDED_COLLECTIONS.includes(col.name.toLowerCase())) {
+      console.log(`⏭️  Skipping "${col.name}" (excluded collection)`);
+      continue;
+    }
+
     const colSlug = col.urlId || slugify(col.name);
     console.log(`📁 ${col.name}  →  ${colSlug}/`);
 
