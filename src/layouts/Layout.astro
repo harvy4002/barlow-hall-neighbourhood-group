@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title,
-  description = 'Barlow Hall Neighbourhood Group — an award-winning community group supporting the Barlow Hall area of Chorlton Park, Manchester.',
+  description = 'Barlow Hall Neighbourhood Group — an award-winning community group supporting the Barlow Hall area in Chorlton, Manchester.',
   heroImage,
   heroAlt = '',
 } = Astro.props;
@@ -30,7 +30,7 @@ const navLinks = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="keywords" content="Barlow Hall, Neighbourhood Group, Chorlton, Chorlton Park, Manchester, community" />
+    <meta name="keywords" content="Barlow Hall, Neighbourhood Group, Chorlton, Manchester, community" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title === siteName ? title : `${title} | ${siteName}`} />
     <meta property="og:description" content={description} />
@@ -97,7 +97,7 @@ const navLinks = [
         style="mix-blend-mode: multiply;"
       />
       <p class="mt-5 text-[#334355] text-base sm:text-lg font-medium max-w-md">
-        A community group improving Chorlton Park for everyone
+        A community group improving Barlow Hall for everyone
       </p>
     </div>
 
@@ -111,7 +111,7 @@ const navLinks = [
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p class="text-sm text-gray-300">
-            &copy; {new Date().getFullYear()} Barlow Hall Neighbourhood Group. Chorlton, Manchester.
+            &copy; {new Date().getFullYear()} Barlow Hall Neighbourhood Group. Barlow Hall, Manchester.
           </p>
         </div>
       </div>
