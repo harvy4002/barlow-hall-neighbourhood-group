@@ -3,12 +3,12 @@ title: "15th July '26 - Community Event Debrief"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
 documentId: "f841d625-ffe9-4cc6-ad63-0b8669444d88"
-updatedAt: "2026-07-25T09:57:04.651Z"
+updatedAt: "2026-08-01T21:43:46.987Z"
 ---
 
 **Meeting Date:** 15th July
 **Location:** Fiona’s House
-**Key Participants:** Fiona (Chair), Tess (Litter Pick Lead), Colette (Resident/Committee), Grace (Gracewell/Council), and other local residents.
+**Key Participants:** Fiona (Chair), Tess (Litter Pick Lead), Colette (Resident/Committee), Grace (Council), and other local residents.
 
 
 ---
