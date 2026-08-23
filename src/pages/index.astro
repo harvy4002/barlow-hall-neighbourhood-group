@@ -20,6 +20,19 @@ const nextMeeting = {
   format: 'In person',
   zoomLink: '',
 };
+
+// Add a new entry here whenever a new subgroup forms
+const subgroups = [
+  {
+    name: 'Green Task Team',
+    description:
+      "A new subgroup for residents interested in gardening, greening, and decisions about our local green spaces — like where to plant trees or what bulbs to order. Forming now, with a low time commitment: mostly meeting in late summer to plan for the year ahead.",
+  },
+];
+
+// Add an entry here once an event is planned, e.g.:
+// { title: 'BHNG Summer Community Event', date: '6 June', time: '1pm–4pm', location: 'Mottram Road green space', description: '...' }
+const events = [];
 ---
 
 <Layout title="Barlow Hall Neighbourhood Group">
@@ -31,7 +44,7 @@ const nextMeeting = {
         Welcome to Barlow Hall<br class="hidden sm:block" /> Neighbourhood Group
       </h1>
       <p class="text-gray-500 text-lg mb-8 max-w-2xl">
-        An award-winning community group supporting the Barlow Hall area, Manchester.
+        An award-winning community group supporting the Barlow Hall in Chorlton, Manchester.
       </p>
     </div>
 
@@ -74,7 +87,7 @@ const nextMeeting = {
         <div>
           <h3 class="text-lg font-semibold text-[#6b3fa0] mb-3">Who We Are</h3>
           <p class="text-gray-600 leading-relaxed mb-4">
-            We're a group of friendly local residents who meet up on the
+            We're a group of friendly local residents who meet up on the 
             <strong>first Wednesday of every month</strong> to discuss current affairs and 
             activities in and around the Barlow Hall estate to continue improving the area
             for everyone.
@@ -237,6 +250,72 @@ const nextMeeting = {
     </div>
     <p class="text-xs text-gray-400 mt-2">
       Co-op Food, Barlow Moor Road, Chorlton, Manchester.
+    </p>
+
+  </section>
+
+  <!-- ── SUBGROUPS ──────────────────────────────────────────────────── -->
+  <section id="subgroups" class="scroll-mt-20 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 bg-[#f5f7f9]">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="reveal mb-10">
+        <h2 class="font-serif text-3xl sm:text-4xl text-[#334355] mb-2 tracking-tight">Subgroups</h2>
+        <p class="text-gray-500">Smaller teams focused on specific interests within BHNG.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-5 reveal">
+        {subgroups.map(group => (
+          <div class="bg-white rounded-xl p-5 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+            <h3 class="font-semibold text-[#6b3fa0] mb-2">{group.name}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{group.description}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── EVENTS ─────────────────────────────────────────────────────── -->
+  <section id="events" class="scroll-mt-20 py-16">
+
+    <div class="reveal mb-10">
+      <h2 class="font-serif text-3xl sm:text-4xl text-[#334355] mb-2 tracking-tight">Events</h2>
+      <p class="text-gray-500">Upcoming community events to get involved with.</p>
+    </div>
+
+    {events.length > 0 ? (
+      <div class="grid sm:grid-cols-2 gap-6 mb-6 reveal">
+        {events.map(event => (
+          <div class="bg-[#334355] text-white rounded-2xl p-7 shadow-lg">
+            <h3 class="font-serif text-2xl mb-5">{event.title}</h3>
+            <dl class="space-y-4 text-sm">
+              <div class="flex flex-col gap-0.5">
+                <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Date</dt>
+                <dd class="font-medium text-base">{event.date}</dd>
+              </div>
+              <div class="flex flex-col gap-0.5">
+                <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Time</dt>
+                <dd class="font-medium">{event.time}</dd>
+              </div>
+              <div class="flex flex-col gap-0.5">
+                <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Location</dt>
+                <dd class="font-medium">{event.location}</dd>
+              </div>
+            </dl>
+            <p class="mt-6 pt-5 border-t border-white/20 text-sm text-gray-300">
+              {event.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="bg-[#f5f7f9] rounded-2xl p-8 text-center reveal mb-6">
+        <p class="text-gray-500">No events are currently scheduled — check back soon!</p>
+      </div>
+    )}
+
+    <p class="reveal text-gray-500 text-sm">
+      Keep an eye on our <strong>WhatsApp group</strong> for the latest event details and sign-ups.
     </p>
 
   </section>
