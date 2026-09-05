@@ -10,6 +10,9 @@ const docs = defineCollection({
     documentId: z.string(),
     updatedAt: z.string(),
     parentDocumentId: z.string().optional(),
+    // "true" when the doc's Outline body contains a `#status` tag (see
+    // scripts/sync-wiki.mjs) — flags it for inclusion in /updates.json.
+    status: z.string().optional(),
   }),
 });
 

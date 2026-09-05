@@ -95,6 +95,38 @@ async function downloadImage(url) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Status tag extraction
+// ---------------------------------------------------------------------------
+
+// Outline has no native tags API, so authors flag a doc as a status-page
+// update by writing a `#status` hashtag anywhere in the document body — the
+// same convention Outline's own (unshipped) tags feature is expected to use.
+// A line containing only the tag is dropped entirely; an inline occurrence
+// just has the tag itself removed, leaving the rest of the sentence intact.
+const STATUS_TAG_LINE = /^[ \t]*#status[ \t]*$/im;
+const STATUS_TAG_INLINE = /#status\b/i;
+
+/** Detects and strips the `#status` marker. Returns { isStatus, markdown }. */
+function extractStatusTag(markdown) {
+  if (STATUS_TAG_LINE.test(markdown)) {
+    return {
+      isStatus: true,
+      markdown: markdown.replace(STATUS_TAG_LINE, '').replace(/\n{3,}/g, '\n\n'),
+    };
+  }
+  if (STATUS_TAG_INLINE.test(markdown)) {
+    return {
+      isStatus: true,
+      markdown: markdown
+        .replace(STATUS_TAG_INLINE, '')
+        .replace(/[ \t]{2,}/g, ' ')
+        .replace(/[ \t]+\n/g, '\n'),
+    };
+  }
+  return { isStatus: false, markdown };
+}
+
 /** Rewrites Outline-hosted image URLs in markdown to local /wiki-images/ paths. */
 async function localiseImages(markdown) {
   const outlineHost = OUTLINE_URL.replace(/^https?:\/\//, '');
@@ -199,7 +231,8 @@ async function main() {
       // Outline includes the document title as a # heading — strip it since we render
       // the title ourselves in the page header to avoid it appearing twice
       const cleaned = unescaped.replace(/^#\s+.+\n+/, '');
-      const markdown = await localiseImages(cleaned);
+      const { isStatus, markdown: destatused } = extractStatusTag(cleaned);
+      const markdown = await localiseImages(destatused);
 
       writePage(filePath, {
         title: doc.title,
@@ -208,9 +241,10 @@ async function main() {
         documentId: doc.id,
         updatedAt: doc.updatedAt,
         ...(doc.parentDocumentId ? { parentDocumentId: doc.parentDocumentId } : {}),
+        ...(isStatus ? { status: 'true' } : {}),
       }, markdown);
 
-      console.log(`   ✓ ${doc.title}`);
+      console.log(`   ✓ ${doc.title}${isStatus ? '  [status]' : ''}`);
       totalDocs++;
     }
   }

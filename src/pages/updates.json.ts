@@ -1,11 +1,12 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-// Static JSON feed of every synced doc, newest first — consumed by the
-// status.chorlton.news site so it doesn't need to scrape bhng.org.uk's HTML.
-// Rebuilt on every deploy (hourly, via the Outline sync workflow).
+// Static JSON feed of docs tagged `#status` in Outline, newest first —
+// consumed by the status.chorlton.news site so it doesn't need to scrape
+// bhng.org.uk's HTML. Rebuilt on every deploy (hourly, via the Outline sync
+// workflow). See scripts/sync-wiki.mjs for how the tag is detected.
 export const GET: APIRoute = async () => {
-  const entries = await getCollection('docs');
+  const entries = await getCollection('docs', entry => entry.data.status === 'true');
 
   const updates = entries
     .map(entry => ({
