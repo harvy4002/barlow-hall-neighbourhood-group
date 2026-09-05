@@ -114,7 +114,11 @@ async function downloadImage(url) {
 // or maintaining a dedicated running "updates log" doc with many dated
 // `#status` lines (many matches, one per bullet). Matched lines are dropped
 // from the rendered page either way.
-const STATUS_TAG_LINE = /^[ \t]*#status(?:[ \t]+(\d{4}-\d{2}-\d{2}))?(?:[ \t]+(.+?))?[ \t]*$/gim;
+//
+// Outline's markdown export escapes a `#` at the start of a line as `\#`
+// (so it isn't re-parsed as a heading elsewhere) — the optional `\\?` below
+// matches both the escaped and unescaped forms.
+const STATUS_TAG_LINE = /^[ \t]*\\?#status(?:[ \t]+(\d{4}-\d{2}-\d{2}))?(?:[ \t]+(.+?))?[ \t]*$/gim;
 
 /**
  * Detects and strips every `#status` marker line. Returns
