@@ -37,19 +37,30 @@ Edit `src/pages/about.astro` and update the `committee` array at the top of the 
 a self-hosted Outline wiki via `scripts/sync-wiki.mjs`, which pulls every
 document into `src/content/docs/` as markdown with frontmatter.
 
-To flag a doc as a status update — surfaced via `/updates.json` for the
-status.chorlton.news site — start a line in the document body with `#status`
-followed by a one-line summary, e.g.:
+To publish a status update — surfaced via `/updates.json` for the
+status.chorlton.news site — start a line anywhere in a document's body with
+`#status`, optionally followed by a date and a one-line summary:
 
 ```
 #status Summer event confirmed for June 20th on Mottram Avenue
+#status 2026-09-01 Summer event confirmed for June 20th on Mottram Avenue
 ```
 
-The sync script detects the tag, strips that line from the rendered page,
-and records the summary text plus a link back to this doc in the feed. A
-bare `#status` with no text still flags the doc, just with no summary shown.
-Outline has no native tags feature, so this hashtag convention is what
-stands in for one.
+The sync script detects every `#status` line in a doc, strips them from the
+rendered page, and records each as its own entry (summary text plus a link
+back to this doc) in the feed. This supports two ways of publishing:
+
+- **Tag a line inside an existing doc**, e.g. meeting minutes — one match,
+  dated from that doc's own last-updated time unless you give an explicit
+  date.
+- **Maintain a dedicated running log doc** — create any doc (e.g. "Updates
+  Log") and add a new dated `#status` line each time something happens.
+  Every line becomes a separate feed entry, all linking back to that one
+  doc.
+
+A bare `#status` with no text still creates an entry, just with no summary
+shown. Outline has no native tags feature, so this hashtag convention is
+what stands in for one.
 
 ## Deploying to GitHub Pages
 
