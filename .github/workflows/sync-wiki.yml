@@ -32,7 +32,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Use GITHUB_TOKEN so the commit triggers the deploy workflow
+          # GITHUB_TOKEN is enough to commit here — it does NOT trigger
+          # deploy.yml's `push` trigger (GitHub blocks GITHUB_TOKEN pushes
+          # from firing other workflows), so deploy.yml instead watches
+          # this workflow via `workflow_run` to redeploy after a sync.
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v4
@@ -58,5 +61,5 @@ jobs:
           else
             git commit -m "chore: sync wiki content from Outline"
             git push
-            echo "Changes committed and pushed — deploy workflow will rebuild the site"
+            echo "Changes committed and pushed — deploy.yml's workflow_run trigger will rebuild the site"
           fi

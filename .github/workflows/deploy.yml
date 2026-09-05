@@ -4,6 +4,13 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # The sync-wiki workflow commits with the default GITHUB_TOKEN, and GitHub
+  # doesn't let GITHUB_TOKEN-authored pushes trigger other workflows (an
+  # anti-recursion safeguard) — so an hourly sync's `push` event above never
+  # fires. This is what actually redeploys the site after a sync commit.
+  workflow_run:
+    workflows: ["Sync Wiki from Outline"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -16,9 +23,14 @@ concurrency:
 
 jobs:
   build:
+    # Skip if the triggering sync run failed or was cancelled — only a
+    # successful sync (or a direct push/manual dispatch) should redeploy.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
