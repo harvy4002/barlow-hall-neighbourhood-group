@@ -38,10 +38,18 @@ a self-hosted Outline wiki via `scripts/sync-wiki.mjs`, which pulls every
 document into `src/content/docs/` as markdown with frontmatter.
 
 To flag a doc as a status update — surfaced via `/updates.json` for the
-status.chorlton.news site — write `#status` anywhere in the document body in
-Outline. The sync script detects the tag, strips it from the rendered page,
-and marks the doc so it appears in the feed. Outline has no native tags
-feature, so this hashtag convention is what stands in for one.
+status.chorlton.news site — start a line in the document body with `#status`
+followed by a one-line summary, e.g.:
+
+```
+#status Summer event confirmed for June 20th on Mottram Avenue
+```
+
+The sync script detects the tag, strips that line from the rendered page,
+and records the summary text plus a link back to this doc in the feed. A
+bare `#status` with no text still flags the doc, just with no summary shown.
+Outline has no native tags feature, so this hashtag convention is what
+stands in for one.
 
 ## Deploying to GitHub Pages
 
