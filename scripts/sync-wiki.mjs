@@ -100,31 +100,25 @@ async function downloadImage(url) {
 // ---------------------------------------------------------------------------
 
 // Outline has no native tags API, so authors flag a doc as a status-page
-// update by writing a `#status` hashtag anywhere in the document body — the
-// same convention Outline's own (unshipped) tags feature is expected to use.
-// A line containing only the tag is dropped entirely; an inline occurrence
-// just has the tag itself removed, leaving the rest of the sentence intact.
-const STATUS_TAG_LINE = /^[ \t]*#status[ \t]*$/im;
-const STATUS_TAG_INLINE = /#status\b/i;
+// update by starting a line with `#status` followed by a one-line summary,
+// e.g. "#status Summer event confirmed for June 20th" — the same convention
+// Outline's own (unshipped) tags feature is expected to use. That line is
+// dropped from the rendered doc; the summary text feeds /updates.json, which
+// also links back to this doc for the full detail. A bare `#status` with no
+// trailing text still flags the doc, just with no summary to show.
+const STATUS_TAG_LINE = /^[ \t]*#status(?:[ \t]+(.+?))?[ \t]*$/im;
 
-/** Detects and strips the `#status` marker. Returns { isStatus, markdown }. */
+/** Detects and strips the `#status [summary]` marker line. Returns { isStatus, summary, markdown }. */
 function extractStatusTag(markdown) {
-  if (STATUS_TAG_LINE.test(markdown)) {
-    return {
-      isStatus: true,
-      markdown: markdown.replace(STATUS_TAG_LINE, '').replace(/\n{3,}/g, '\n\n'),
-    };
+  const match = markdown.match(STATUS_TAG_LINE);
+  if (!match) {
+    return { isStatus: false, summary: undefined, markdown };
   }
-  if (STATUS_TAG_INLINE.test(markdown)) {
-    return {
-      isStatus: true,
-      markdown: markdown
-        .replace(STATUS_TAG_INLINE, '')
-        .replace(/[ \t]{2,}/g, ' ')
-        .replace(/[ \t]+\n/g, '\n'),
-    };
-  }
-  return { isStatus: false, markdown };
+  return {
+    isStatus: true,
+    summary: match[1]?.trim() || undefined,
+    markdown: markdown.replace(STATUS_TAG_LINE, '').replace(/\n{3,}/g, '\n\n'),
+  };
 }
 
 /** Rewrites Outline-hosted image URLs in markdown to local /wiki-images/ paths. */
@@ -231,7 +225,7 @@ async function main() {
       // Outline includes the document title as a # heading — strip it since we render
       // the title ourselves in the page header to avoid it appearing twice
       const cleaned = unescaped.replace(/^#\s+.+\n+/, '');
-      const { isStatus, markdown: destatused } = extractStatusTag(cleaned);
+      const { isStatus, summary, markdown: destatused } = extractStatusTag(cleaned);
       const markdown = await localiseImages(destatused);
 
       writePage(filePath, {
@@ -242,6 +236,7 @@ async function main() {
         updatedAt: doc.updatedAt,
         ...(doc.parentDocumentId ? { parentDocumentId: doc.parentDocumentId } : {}),
         ...(isStatus ? { status: 'true' } : {}),
+        ...(summary ? { summary } : {}),
       }, markdown);
 
       console.log(`   ✓ ${doc.title}${isStatus ? '  [status]' : ''}`);

@@ -12,6 +12,7 @@ export const GET: APIRoute = async () => {
     .map(entry => ({
       title: entry.data.title,
       collection: entry.data.collection,
+      summary: entry.data.summary,
       url: `https://bhng.org.uk/docs/${entry.id.replace(/\.md$/, '')}`,
       updatedAt: entry.data.updatedAt,
     }))
