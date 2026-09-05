@@ -99,24 +99,35 @@ async function downloadImage(url) {
 // Status tag extraction
 // ---------------------------------------------------------------------------
 
-// Outline has no native tags API, so authors flag a doc as a status-page
-// update by starting a line with `#status` followed by a one-line summary,
-// e.g. "#status Summer event confirmed for June 20th" — the same convention
-// Outline's own (unshipped) tags feature is expected to use. That line is
-// dropped from the rendered doc; the summary text feeds /updates.json, which
-// also links back to this doc for the full detail. A bare `#status` with no
-// trailing text still flags the doc, just with no summary to show.
-const STATUS_TAG_LINE = /^[ \t]*#status(?:[ \t]+(.+?))?[ \t]*$/im;
+// Outline has no native tags API, so authors flag lines as status-page
+// updates by starting them with `#status`, optionally followed by an
+// explicit date and a one-line summary — the same convention Outline's own
+// (unshipped) tags feature is expected to use, e.g.:
+//
+//   #status Summer event confirmed for June 20th
+//   #status 2026-09-01 Summer event confirmed for June 20th
+//
+// Every matching line in a doc becomes one entry (falling back to the doc's
+// own `updatedAt` when no explicit date is given), which supports two
+// authoring styles with the same syntax: tagging a single line inside an
+// existing doc like meeting minutes (one match, dated from the doc itself),
+// or maintaining a dedicated running "updates log" doc with many dated
+// `#status` lines (many matches, one per bullet). Matched lines are dropped
+// from the rendered page either way.
+const STATUS_TAG_LINE = /^[ \t]*#status(?:[ \t]+(\d{4}-\d{2}-\d{2}))?(?:[ \t]+(.+?))?[ \t]*$/gim;
 
-/** Detects and strips the `#status [summary]` marker line. Returns { isStatus, summary, markdown }. */
-function extractStatusTag(markdown) {
-  const match = markdown.match(STATUS_TAG_LINE);
-  if (!match) {
-    return { isStatus: false, summary: undefined, markdown };
-  }
+/**
+ * Detects and strips every `#status` marker line. Returns
+ * { updates: {date, summary}[], markdown }; `updates` is empty when the doc
+ * has no tags at all.
+ */
+function extractStatusUpdates(markdown, fallbackDate) {
+  const updates = [...markdown.matchAll(STATUS_TAG_LINE)].map(match => ({
+    date: match[1] || fallbackDate,
+    summary: match[2]?.trim() || undefined,
+  }));
   return {
-    isStatus: true,
-    summary: match[1]?.trim() || undefined,
+    updates,
     markdown: markdown.replace(STATUS_TAG_LINE, '').replace(/\n{3,}/g, '\n\n'),
   };
 }
@@ -225,7 +236,7 @@ async function main() {
       // Outline includes the document title as a # heading — strip it since we render
       // the title ourselves in the page header to avoid it appearing twice
       const cleaned = unescaped.replace(/^#\s+.+\n+/, '');
-      const { isStatus, summary, markdown: destatused } = extractStatusTag(cleaned);
+      const { updates: statusUpdates, markdown: destatused } = extractStatusUpdates(cleaned, doc.updatedAt);
       const markdown = await localiseImages(destatused);
 
       writePage(filePath, {
@@ -235,11 +246,10 @@ async function main() {
         documentId: doc.id,
         updatedAt: doc.updatedAt,
         ...(doc.parentDocumentId ? { parentDocumentId: doc.parentDocumentId } : {}),
-        ...(isStatus ? { status: 'true' } : {}),
-        ...(summary ? { summary } : {}),
+        ...(statusUpdates.length > 0 ? { statusUpdates: JSON.stringify(statusUpdates) } : {}),
       }, markdown);
 
-      console.log(`   ✓ ${doc.title}${isStatus ? '  [status]' : ''}`);
+      console.log(`   ✓ ${doc.title}${statusUpdates.length ? `  [status ×${statusUpdates.length}]` : ''}`);
       totalDocs++;
     }
   }
