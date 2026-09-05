@@ -16,9 +16,6 @@ Remote: Tess, Harvy
 
 Apologies: Ronald, Nigel
 
-
-
-
 Agenda
 
 [__1. Matters arising__](https://docs.google.com/document/d/1iauHwG-Py6otq3HO5YtgMl2n1IY46zZSc4iiOEDFtCE/edit?tab=t.0#heading=h.1bube73uho15)

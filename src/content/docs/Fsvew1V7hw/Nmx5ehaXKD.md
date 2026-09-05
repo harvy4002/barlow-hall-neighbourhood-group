@@ -8,7 +8,6 @@ updatedAt: "2026-07-25T10:13:10.439Z"
 
 # Summer Meeting May - Action plan
 
-
 ---
 
 ## **1. Deadlines & Meetings**
@@ -17,7 +16,6 @@ updatedAt: "2026-07-25T10:13:10.439Z"
 * **May 28 (7 PM):** Planning meeting at Fi’s.
 * **June 1:** Additional meeting (if required).
 * **June 6 (11 AM):** On-the-day setup begins.
-
 
 ---
 
@@ -51,7 +49,6 @@ updatedAt: "2026-07-25T10:13:10.439Z"
 - [ ] Volunteers for Green Spaces stall
 - [ ] Volunteers for BHNG stall
 
-
 ---
 
 ## **3. Outreach, Stalls & Promotion**
@@ -72,14 +69,12 @@ updatedAt: "2026-07-25T10:13:10.439Z"
 - [x] Action: @Eran Logo competition announced
   - [ ] Needs promoting more
 
-
 ---
 
 ## **4. Financial & Administrative**
 
 - [x] \*\*@\*\*Colette to submit NIF grant application; Fi to provide bank details.
 - [ ] \*\*@\*\*Update bank signatories (formal letter required)
-
 
 ---
 
@@ -88,11 +83,9 @@ updatedAt: "2026-07-25T10:13:10.439Z"
 - [x] @Derya to order equipment for day of Picnic
 - [ ] **Action:** Establish a rota for July 19th/August 23rd and Father's Day; set up automated text reminders for 10-15 participants
 
-
 - [ ] Coordinate with Will on the green spaces/wildlife alignment project
 - [ ] Explore water butts
 - [x] Swift box projects
-
 
 - [ ] \*\*@\*\*Fi to invite community police.
 - [ ] Mugs for AGM (move these to somewhere else)

@@ -17,7 +17,6 @@ Agenda
 * Public liability
 * Green group
 
-
 PART 1: Summer event Sat 6 June 1-4 pm
 
 The event will take place on the green area on Mottram Road, theme is picnic vibe.
@@ -37,11 +36,7 @@ Activities:
 
 Budget: Unity Arts £180, music cost TBC but allow £500, ice cream van cost TBC, catering cost TBC, road closure £160
 
-
-
-
 PART 2: Everything else!
-
 
 1. Litter picks: Derya has volunteered to organise the next three events; 26 April, 17 May, 28 June
 2. Newsletter: Our next newsletter will be produced primarily to promote the summer event, will also include dates for group meetings and litter picks. To be completed mid-April so we can deliver to all homes on the estate ideally a month before the event. Would be great to get a volunteer to organise the distribution.
@@ -49,11 +44,7 @@ PART 2: Everything else!
 4. Public liability insurance: Colette has got quotes from 3 organisations, agreed at last meeting to go with Ripe Insurance around £82. Has since checked cover and that covers us for £5million, only £97 for £10 million cover. This is for annual cover not just the summer event.
 5. Finances: Bank has approx £2000. Planned costs include: Fi expense claim around £40 (submitted to Phil), summer event costs TBC but around £1000, newsletter printing £300, public liability insurance £100, banner printed for events £TBC, bulb planting £300. NIF found is open for applications now.
 
-
-
-
 ACTIONS:
-
 
  1. Fi to follow up with DJ 
  2. Fi to follow up with ice cream van from Arrowfield Rd

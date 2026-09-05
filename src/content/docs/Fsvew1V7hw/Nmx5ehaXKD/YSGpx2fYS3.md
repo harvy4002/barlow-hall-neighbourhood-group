@@ -18,9 +18,7 @@ parentDocumentId: "946b0184-b644-44d2-a954-a8cecd265864"
 
 The BHNG summer community event is a family-friendly, inclusive gathering designed to bring local residents together and build social connection across the neighbourhood. 
 
-
 The event will provide opportunities for connection, wellbeing, learning, and fun through activities, entertainment, and refreshments in a relaxed and welcoming environment.
-
 
 The event aims to strengthen community relationships, increase engagement with BHNG, and create a positive shared experience for residents of all ages.
 
@@ -29,7 +27,6 @@ The event aims to strengthen community relationships, increase engagement with B
 Intro about BHNG… who we are, what we do, how to get involved (copy from newsletter)
 
 # Objectives
-
 
 1. Provide a fun and enjoyable event for local residents
 2. Encourage community connection
@@ -40,9 +37,7 @@ Intro about BHNG… who we are, what we do, how to get involved (copy from newsl
 
 All BHNG residents
 
-
 # BHNG information and engagement stall
-
 
 1. Information about the group and how to get involved (sign-up sheet), promote the WhatsApp chat and sub-groups (QR code)
 2. Information on local activities, groups, events that residents can join (Chorlton booklet recently produced)
@@ -81,9 +76,6 @@ Where possible, local groups and organisations will be invited to take part by:
 * Hosting information stalls
 * Running activities or demonstrations
 * Providing performances or entertainment
-
-
-
 
 This will strengthen local partnerships and showcase available support and opportunities within the community.
 
@@ -128,13 +120,7 @@ Costs include:
 |      |      |       |
 |      |      |       |
 
-
-
-
 Opportunities for sponsorship, in-kind donations, or volunteer support will be explored to manage costs.
-
-
-
 
 # Evaluation and outcomes
 
@@ -147,19 +133,11 @@ Success will be measured through:
 
 Feedback will help inform future community events.
 
-
-
-
 # Conclusion
 
 The BHNG Summer Community Event offers an excellent opportunity to bring residents together, strengthen community ties, and create a positive and memorable experience. With thoughtful planning and community involvement, the event will support BHNG’s commitment to building strong, connected neighbourhoods.
 
-
-
-
 # Evaluation
-
-
 
 # Actions
 

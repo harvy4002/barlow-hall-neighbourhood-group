@@ -18,7 +18,6 @@ Apologies: Phil, Harvy
 
 # Agenda
 
-
 1. Constitution, membership, meetings
 2. Budget updates and bank a/c
 3. Feedback on AGM, planting event, online survey
@@ -63,17 +62,8 @@ Not discussed at length beyond acknowledging the need for non-digital communicat
 
 No other issues raised.
 
-
-
-
 **Our next meeting: Wednesday, 3 Dec 2025, 5-6pm, room above co-op**
 
-
-
-
 Signed: _____________________
-
-
-
 
 Date: _______________________
