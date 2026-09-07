@@ -3,7 +3,7 @@ title: "15th July '26 - Community Event Debrief"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
 documentId: "f841d625-ffe9-4cc6-ad63-0b8669444d88"
-updatedAt: "2026-09-05T22:10:31.847Z"
+updatedAt: "2026-09-07T20:08:25.536Z"
 ---
 
 **Meeting Date:** 15th July
@@ -46,5 +46,3 @@ The committee established a timeline for the remainder of the year to ensure ade
 * **WhatsApp Group:** The group has seen an increase in members. While generally productive, the committee emphasized the importance of maintaining a friendly environment and will monitor for inappropriate language or repetitive negative posts.
 * **Advent Window Displays:** A call for themes will be issued via the newsletter and a poll on WhatsApp. Past themes include "Birds" and "The Three Wise Men of Barlow".
 * **Local Outreach:** There is a desire to improve engagement with residents in newer developments and surrounding areas like Hardy Lane.
-
-/
