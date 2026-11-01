@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getNextMeetingDate, formatMeetingDate } from '../lib/nextMeeting';
 
 const committee = [
   { name: 'Fiona', role: 'Chair' },
@@ -13,9 +14,11 @@ const committee = [
   { name: 'Tess', role: 'Committee Member' },
 ];
 
-// Update when meeting details change
+// The date is worked out automatically (first Wednesday of the month, 5:30pm).
+// To announce a one-off change, set `dateOverride` to some text, e.g. 'Wednesday 10 December 2025, 5:30pm'.
+const dateOverride = '';
 const nextMeeting = {
-  date: 'TBC — details will be announced on WhatsApp',
+  date: dateOverride || formatMeetingDate(getNextMeetingDate()),
   location: 'Co-op Food, Barlow Moor Road, Chorlton, Manchester',
   format: 'In person',
   zoomLink: '',
@@ -184,7 +187,7 @@ const events = [];
         <dl class="space-y-4 text-sm">
           <div class="flex flex-col gap-0.5">
             <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Date</dt>
-            <dd class="font-medium text-base">{nextMeeting.date}</dd>
+            <dd class="font-medium text-base" id="next-meeting-date" data-override={dateOverride ? 'true' : undefined}>{nextMeeting.date}</dd>
           </div>
           <div class="flex flex-col gap-0.5">
             <dt class="text-[#e8a020] text-xs uppercase tracking-widest font-semibold">Format</dt>
@@ -321,3 +324,12 @@ const events = [];
   </section>
 
 </Layout>
+
+<script>
+  // Recalculate in the visitor's browser so the date stays current between site builds.
+  import { getNextMeetingDate, formatMeetingDate } from '../lib/nextMeeting';
+  const el = document.getElementById('next-meeting-date');
+  if (el && !el.dataset.override) {
+    el.textContent = formatMeetingDate(getNextMeetingDate());
+  }
+</script>
