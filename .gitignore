@@ -6,3 +6,4 @@ node_modules/
 !.env.example
 AGENTS.md
 CLAUDE.md
+.DS_Store
