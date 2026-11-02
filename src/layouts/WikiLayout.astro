@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Analytics from '../components/Analytics.astro';
 import { getCollection } from 'astro:content';
+import { compareDocTitles, naturalCompare } from '../lib/docOrder';
 
 interface Props {
   title: string;
@@ -20,15 +21,15 @@ const siteName = 'Barlow Hall Neighbourhood Group';
 // Build sidebar nav tree from all wiki entries
 const allEntries = await getCollection('docs');
 
-// Follow Outline's sidebar order; docs synced without a position sort last, by title
-const byOutlineOrder = (a: typeof allEntries[number], b: typeof allEntries[number]) =>
-  (a.data.collectionOrder ?? Infinity) - (b.data.collectionOrder ?? Infinity) ||
-  (a.data.order ?? Infinity) - (b.data.order ?? Infinity) ||
-  a.data.title.localeCompare(b.data.title);
+// Collections by name, then docs newest-first by title date, then by title
+// (see src/lib/docOrder.ts)
+const byNavOrder = (a: typeof allEntries[number], b: typeof allEntries[number]) =>
+  naturalCompare(a.data.collection, b.data.collection) ||
+  compareDocTitles(a.data.title, b.data.title);
 
 // Group entries by collection
 const collectionMap = new Map<string, { name: string; entries: typeof allEntries }>();
-for (const entry of [...allEntries].sort(byOutlineOrder)) {
+for (const entry of [...allEntries].sort(byNavOrder)) {
   const key = entry.data.collectionSlug;
   if (!collectionMap.has(key)) {
     collectionMap.set(key, { name: entry.data.collection, entries: [] });
