@@ -2,6 +2,8 @@
 title: "7th January '26 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
+collectionOrder: "3"
+order: "6"
 documentId: "0dbdcba2-0a53-45f0-8503-418533d7dd5d"
 updatedAt: "2026-07-26T16:26:04.071Z"
 ---

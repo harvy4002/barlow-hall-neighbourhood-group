@@ -2,6 +2,8 @@
 title: "3rd December '25 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
+collectionOrder: "3"
+order: "7"
 documentId: "1800d528-bbe0-4dac-9009-8d9988ef475e"
 updatedAt: "2026-07-26T16:26:03.079Z"
 ---
