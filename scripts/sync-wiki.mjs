@@ -197,6 +197,32 @@ async function fetchAllDocuments(collectionId) {
   return docs;
 }
 
+/**
+ * Returns a documentId → sibling position map following the collection's
+ * sidebar order in Outline. `collections.documents` returns the nested tree in
+ * manual order; if the collection is set to sort by title, Outline sorts that
+ * client-side, so we mirror it here.
+ */
+async function fetchDocumentOrder(col) {
+  const { data: tree } = await api('collections.documents', { id: col.id });
+  const byTitle = col.sort?.field === 'title';
+  const desc = col.sort?.direction === 'desc';
+  const order = new Map();
+
+  const walk = nodes => {
+    const siblings = byTitle
+      ? [...nodes].sort((a, b) => a.title.localeCompare(b.title) * (desc ? -1 : 1))
+      : nodes;
+    siblings.forEach((node, i) => {
+      order.set(node.id, i);
+      walk(node.children ?? []);
+    });
+  };
+  walk(tree);
+
+  return order;
+}
+
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
@@ -205,9 +231,13 @@ async function main() {
   const { data: collections } = await api('collections.list', { limit: 100 });
   console.log(`Found ${collections.length} collection(s)\n`);
 
+  // Outline orders collections in its sidebar by their fractional `index`
+  // string, compared by plain code-point order (not localeCompare).
+  collections.sort((a, b) => (a.index < b.index ? -1 : a.index > b.index ? 1 : 0));
+
   let totalDocs = 0;
 
-  for (const col of collections) {
+  for (const [collectionOrder, col] of collections.entries()) {
     if (EXCLUDED_COLLECTIONS.includes(col.name.toLowerCase())) {
       console.log(`⏭️  Skipping "${col.name}" (excluded collection)`);
       continue;
@@ -217,6 +247,7 @@ async function main() {
     console.log(`📁 ${col.name}  →  ${colSlug}/`);
 
     const documents = await fetchAllDocuments(col.id);
+    const docOrder = await fetchDocumentOrder(col);
 
     // Build documentId → slug map for resolving parent relationships
     const idToSlug = Object.fromEntries(
@@ -247,6 +278,8 @@ async function main() {
         title: doc.title,
         collection: col.name,
         collectionSlug: colSlug,
+        collectionOrder,
+        order: docOrder.get(doc.id),
         documentId: doc.id,
         updatedAt: doc.updatedAt,
         ...(doc.parentDocumentId ? { parentDocumentId: doc.parentDocumentId } : {}),
