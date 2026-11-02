@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -19,9 +20,15 @@ const siteName = 'Barlow Hall Neighbourhood Group';
 // Build sidebar nav tree from all wiki entries
 const allEntries = await getCollection('docs');
 
+// Follow Outline's sidebar order; docs synced without a position sort last, by title
+const byOutlineOrder = (a: typeof allEntries[number], b: typeof allEntries[number]) =>
+  (a.data.collectionOrder ?? Infinity) - (b.data.collectionOrder ?? Infinity) ||
+  (a.data.order ?? Infinity) - (b.data.order ?? Infinity) ||
+  a.data.title.localeCompare(b.data.title);
+
 // Group entries by collection
 const collectionMap = new Map<string, { name: string; entries: typeof allEntries }>();
-for (const entry of allEntries) {
+for (const entry of [...allEntries].sort(byOutlineOrder)) {
   const key = entry.data.collectionSlug;
   if (!collectionMap.has(key)) {
     collectionMap.set(key, { name: entry.data.collection, entries: [] });
@@ -88,6 +95,7 @@ const collections = Array.from(collectionMap.entries()).map(([slug, data]) => ({
     <meta property="og:description" content={description} />
     <title>{title} | {siteName}</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <Analytics />
   </head>
   <body class="min-h-screen flex flex-col bg-white">
 

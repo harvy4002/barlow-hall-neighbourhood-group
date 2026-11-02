@@ -7,6 +7,10 @@ const docs = defineCollection({
     title: z.string(),
     collection: z.string(),
     collectionSlug: z.string(),
+    // Sidebar positions from Outline (see scripts/sync-wiki.mjs). writePage
+    // quotes every value, hence the coercion.
+    collectionOrder: z.coerce.number().optional(),
+    order: z.coerce.number().optional(),
     documentId: z.string(),
     updatedAt: z.string(),
     parentDocumentId: z.string().optional(),
