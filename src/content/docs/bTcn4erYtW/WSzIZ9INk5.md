@@ -2,7 +2,7 @@
 title: "5th November '25 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
-collectionOrder: "3"
+collectionOrder: "4"
 order: "8"
 documentId: "e40da6b8-8ad0-4d77-b016-fa5f56785f7f"
 updatedAt: "2026-07-26T16:26:03.413Z"

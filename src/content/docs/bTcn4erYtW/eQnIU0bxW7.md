@@ -2,7 +2,7 @@
 title: "2nd Sept '26 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
-collectionOrder: "3"
+collectionOrder: "4"
 order: "1"
 documentId: "91ca6fc2-2151-4793-a128-cb6ba66ff30b"
 updatedAt: "2026-09-07T20:08:17.766Z"
