@@ -2,8 +2,6 @@
 title: "Ideas"
 collection: "Events"
 collectionSlug: "Fsvew1V7hw"
-collectionOrder: "1"
-order: "1"
 documentId: "b28d2483-bf56-4ed2-9626-df39dcb9149d"
 updatedAt: "2026-07-25T10:13:00.209Z"
 parentDocumentId: "946b0184-b644-44d2-a954-a8cecd265864"

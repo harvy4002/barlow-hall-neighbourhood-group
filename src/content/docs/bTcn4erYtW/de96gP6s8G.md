@@ -2,8 +2,6 @@
 title: "7th Oct '26 - Minutes"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
-collectionOrder: "4"
-order: "0"
 documentId: "6eaf3c42-bd47-42d4-8d05-4bfbabd1917f"
 updatedAt: "2026-11-02T17:10:58.535Z"
 ---

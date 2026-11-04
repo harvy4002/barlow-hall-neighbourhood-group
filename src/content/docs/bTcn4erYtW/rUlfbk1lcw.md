@@ -2,8 +2,6 @@
 title: "6th October '25 - AGM"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
-collectionOrder: "4"
-order: "9"
 documentId: "3910fce1-d393-4622-9bfb-108ef47b33ad"
 updatedAt: "2026-07-26T16:26:02.755Z"
 ---

@@ -2,8 +2,6 @@
 title: "Summer Event"
 collection: "Events"
 collectionSlug: "Fsvew1V7hw"
-collectionOrder: "1"
-order: "1"
 documentId: "946b0184-b644-44d2-a954-a8cecd265864"
 updatedAt: "2026-07-25T10:13:10.439Z"
 ---

@@ -2,8 +2,6 @@
 title: "Plan"
 collection: "Events"
 collectionSlug: "Fsvew1V7hw"
-collectionOrder: "1"
-order: "0"
 documentId: "db924e30-6dd8-405c-8ac4-38e58a8bffb0"
 updatedAt: "2026-07-25T10:12:59.467Z"
 parentDocumentId: "946b0184-b644-44d2-a954-a8cecd265864"

@@ -2,8 +2,6 @@
 title: "Constitution"
 collection: "About BHNG"
 collectionSlug: "5G1DgJW8Ky"
-collectionOrder: "0"
-order: "0"
 documentId: "6116591f-bf02-456d-9fc5-8e1fb8827dcf"
 updatedAt: "2026-11-02T19:51:49.512Z"
 ---

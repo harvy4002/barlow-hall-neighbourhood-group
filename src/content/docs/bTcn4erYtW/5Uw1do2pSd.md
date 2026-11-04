@@ -2,8 +2,6 @@
 title: "15th July '26 - Community Event Debrief"
 collection: "Minutes"
 collectionSlug: "bTcn4erYtW"
-collectionOrder: "4"
-order: "2"
 documentId: "f841d625-ffe9-4cc6-ad63-0b8669444d88"
 updatedAt: "2026-09-07T20:08:25.536Z"
 ---
